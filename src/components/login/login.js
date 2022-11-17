@@ -142,9 +142,6 @@ const Login = () => {
         </LinearGradient>
 
         <View>
-          {isLoading && <ActivityIndicator size="large" color="#fe3d6d" />}
-        </View>
-        <View>
           {/* {!isLoading && (
             <Text style={{color: '#eee'}}>{String(data?.user?.username)}</Text>
           )} */}

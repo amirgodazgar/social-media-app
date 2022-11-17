@@ -12,7 +12,7 @@ const ToolBar = () => {
     {name: 'heart', text: 'Notifications'},
     {name: 'user', text: 'Profile'},
   ];
-  const isSelected = name => (name === 'home' ? '#fe3d6d' : '#EAEAEA');
+  const isSelected = name => (name === 'home' ? '#fe3d6d' : '#B2B2B2');
 
   return (
     <View style={styles.toolbarBox}>

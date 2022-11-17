@@ -37,8 +37,9 @@ export const styles = ScaledSheet.create({
     fontWeight: '600',
   },
   time: {
-    fontSize: '14@sr',
+    fontSize: '13@sr',
     fontWeight: '500',
+    color: '#B2B2B2',
   },
 
   followBox: {
@@ -68,6 +69,7 @@ export const styles = ScaledSheet.create({
   summary: {
     fontSize: '12@sr',
     fontWeight: '500',
+    color: '#B2B2B2',
   },
   photoContainer: {
     flex: 0.57,

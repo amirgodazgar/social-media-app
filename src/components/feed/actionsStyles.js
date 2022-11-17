@@ -18,7 +18,7 @@ export const styles = ScaledSheet.create({
   actionText: {
     fontSize: '12@sr',
     margin: '3@sr',
-    color: '#EAEAEA',
+    color: '#B2B2B2',
   },
   iconBox: {
     flexDirection: 'row',
@@ -27,6 +27,6 @@ export const styles = ScaledSheet.create({
   },
   icon: {
     margin: '4@sr',
-    color: '#EAEAEA',
+    color: '#B2B2B2',
   },
 });

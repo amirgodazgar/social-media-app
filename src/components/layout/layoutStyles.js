@@ -32,6 +32,5 @@ export const styles = ScaledSheet.create({
   actionText: {
     fontSize: '12@sr',
     fontWeight: '400',
-   
   },
 });

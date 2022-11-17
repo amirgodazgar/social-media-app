@@ -1,12 +1,12 @@
 import React from 'react';
-import {ScrollView, StatusBar, View} from 'react-native';
+import {StatusBar, View} from 'react-native';
 import ToolBar from './tool-bar';
 import {styles} from './layoutStyles';
 import Stories from '../stories/stories';
 
 const Layout = ({children}) => {
   return (
-    <ScrollView contentContainerStyle={styles.layoutContainer}>
+    <View style={styles.layoutContainer}>
       <StatusBar
         animated={true}
         backgroundColor="#fe3d6d"
@@ -19,7 +19,7 @@ const Layout = ({children}) => {
       </View>
       <View style={styles.postsContainer}>{children}</View>
       <ToolBar />
-    </ScrollView>
+    </View>
   );
 };
 

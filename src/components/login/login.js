@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import {
   StatusBar,
@@ -15,7 +15,7 @@ import {styles} from './loginStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
 import {login} from '../../services/auth';
-import {useMutation, useQuery} from 'react-query';
+import {useMutation} from 'react-query';
 
 const Login = () => {
   const {control, handleSubmit} = useForm({
@@ -55,7 +55,7 @@ const Login = () => {
   // };
 
   return (
-    <LinearGradient style={{flex: 1}} colors={['#ff005b', '#fc9995']}>
+    <LinearGradient style={{flex: 1}} colors={['#181818', '#fe3d6d']}>
       <ScrollView contentContainerStyle={styles.viewContainer}>
         <StatusBar
           animated={true}
@@ -64,20 +64,18 @@ const Login = () => {
           showHideTransition="fade"
           hidden={false}
         />
-        <LinearGradient
-          style={styles.gradient}
-          colors={['#ff005b', '#f2f2f29a']}>
+        <LinearGradient style={styles.gradient} colors={['#181818', '#181818']}>
           <View style={styles.box}>
-            <Text style={styles.header}>Welcome back to WOW</Text>
+            <Text style={styles.header}>Welcome back to Wow</Text>
             <Text style={styles.subHeader}>Login to your account</Text>
 
             <View style={styles.avatarContainer}>
               {isLoading ? (
-                <ActivityIndicator size="large" color="#fff" />
+                <ActivityIndicator size="large" color="#EAEAEA" />
               ) : (
                 <Image
                   style={styles.avatar}
-                  source={require('../../assets/avatar2.jpg')}
+                  source={require('../../assets/login.png')}
                 />
               )}
             </View>
@@ -86,7 +84,7 @@ const Login = () => {
                 name="envelope"
                 size={15}
                 style={styles.icon}
-                color="#ff005b"
+                color="#fe3d6d"
                 solid
               />
               <Controller
@@ -102,7 +100,7 @@ const Login = () => {
                     value={value}
                     keyboardType="email-address"
                     placeholder="Email"
-                    placeholderTextColor={'#fff'}
+                    placeholderTextColor={'#EAEAEA'}
                     style={styles.input}
                   />
                 )}
@@ -113,7 +111,7 @@ const Login = () => {
                 name="lock"
                 size={15}
                 style={styles.icon}
-                color="#ff005b"
+                color="#fe3d6d"
                 solid
               />
               <Controller
@@ -129,7 +127,7 @@ const Login = () => {
                     value={value}
                     secureTextEntry={true}
                     placeholder="Password"
-                    placeholderTextColor={'#fff'}
+                    placeholderTextColor={'#EAEAEA'}
                     style={styles.input}
                   />
                 )}
@@ -138,7 +136,7 @@ const Login = () => {
             <Button
               onPress={handleSubmit(onSubmit)}
               title="Login"
-              color="#E3002C"
+              color="#fe3d6d"
             />
           </View>
         </LinearGradient>
@@ -146,7 +144,11 @@ const Login = () => {
         <View>
           {isLoading && <ActivityIndicator size="large" color="#fe3d6d" />}
         </View>
-        <View>{!isLoading && <Text>{String(data?.user?.username)}</Text>}</View>
+        <View>
+          {/* {!isLoading && (
+            <Text style={{color: '#eee'}}>{String(data?.user?.username)}</Text>
+          )} */}
+        </View>
       </ScrollView>
     </LinearGradient>
   );

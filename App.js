@@ -20,9 +20,9 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <SafeAreaView style={{flex: 1}}>
         {/* <Register /> */}
-        {/* <Login /> */}
+        <Login />
         {/* <Welcome /> */}
-        <Feed />
+        {/* <Feed /> */}
       </SafeAreaView>
     </QueryClientProvider>
   );

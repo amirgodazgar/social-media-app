@@ -50,7 +50,7 @@ const Register = () => {
   // };
 
   return (
-    <LinearGradient style={{flex: 1}} colors={['#ff005b', '#fc9995']}>
+    <LinearGradient style={{flex: 1}} colors={['#181818', '#fe3d6d']}>
       <ScrollView contentContainerStyle={styles.viewContainer}>
         <StatusBar
           animated={true}
@@ -60,9 +60,7 @@ const Register = () => {
           hidden={false}
         />
 
-        <LinearGradient
-          style={styles.gradient}
-          colors={['#ff005b', '#f2f2f29a']}>
+        <LinearGradient style={styles.gradient} colors={['#181818', '#181818']}>
           <View style={styles.box}>
             <Text style={styles.header}>Welcome to WOW</Text>
 
@@ -71,7 +69,7 @@ const Register = () => {
             <View style={styles.avatarContainer}>
               <Image
                 style={styles.avatar}
-                source={require('../../assets/avatar2.jpg')}
+                source={require('../../assets/login.png')}
               />
             </View>
             <View style={styles.avatarContainer}>
@@ -79,7 +77,7 @@ const Register = () => {
                 name="envelope"
                 size={15}
                 style={styles.icon}
-                color="#ff005b"
+                color="#fe3d6d"
                 solid
               />
               <Controller
@@ -95,7 +93,7 @@ const Register = () => {
                     value={value}
                     keyboardType="email-address"
                     placeholder="Email"
-                    placeholderTextColor={'#fff'}
+                    placeholderTextColor={'#EAEAEA'}
                     style={styles.input}
                   />
                 )}
@@ -106,7 +104,7 @@ const Register = () => {
                 name="user"
                 size={15}
                 style={styles.icon}
-                color="#ff005b"
+                color="#fe3d6d"
                 solid
               />
 
@@ -123,7 +121,7 @@ const Register = () => {
                     value={value}
                     keyboardType="default"
                     placeholder="Username"
-                    placeholderTextColor={'#fff'}
+                    placeholderTextColor={'#EAEAEA'}
                     style={styles.input}
                   />
                 )}
@@ -134,7 +132,7 @@ const Register = () => {
                 name="lock"
                 size={15}
                 style={styles.icon}
-                color="#ff005b"
+                color="#fe3d6d"
                 solid
               />
 
@@ -151,7 +149,7 @@ const Register = () => {
                     value={value}
                     secureTextEntry={true}
                     placeholder="Password"
-                    placeholderTextColor={'#fff'}
+                    placeholderTextColor={'#EAEAEA'}
                     style={styles.input}
                   />
                 )}

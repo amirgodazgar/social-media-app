@@ -1,0 +1,20 @@
+import {https} from './https';
+
+export const getRegister = async userInfo => {
+  try {
+    const response = await https.post('/auth/local/register', userInfo);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const login = async userInfo => {
+  try {
+    const response = await https.post('/auth/local', userInfo);
+    console.log(response.error);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+};

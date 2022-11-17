@@ -1,0 +1,41 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/BalooThambi2-Bold.ttf",
+      "sha1": "d00bd8ef0e655656ca0452265b816b39b159e3d2"
+    },
+    {
+      "path": "assets/fonts/BalooThambi2-ExtraBold.ttf",
+      "sha1": "83e5ece27cf5e897979a7932ddced8ee62c2bc46"
+    },
+    {
+      "path": "assets/fonts/BalooThambi2-Medium.ttf",
+      "sha1": "2c3383fb66fef2da37ab787d8144f0da8251698d"
+    },
+    {
+      "path": "assets/fonts/BalooThambi2-Regular.ttf",
+      "sha1": "aa2196838f0bbf013d86aec36c774840836fd148"
+    },
+    {
+      "path": "assets/fonts/BalooThambi2-SemiBold.ttf",
+      "sha1": "1b79ef5ec72592c1aa8d729722ff24e875161f1b"
+    },
+    {
+      "path": "assets/fonts/DancingScript-Bold.ttf",
+      "sha1": "42858229a137c5188a859df102afff145200114d"
+    },
+    {
+      "path": "assets/fonts/DancingScript-Medium.ttf",
+      "sha1": "30711d9cdbed046fef8128082c6cc1a9287dbc7c"
+    },
+    {
+      "path": "assets/fonts/DancingScript-Regular.ttf",
+      "sha1": "b52e869bd47b6e98fd907ae00b1828916451b3b0"
+    },
+    {
+      "path": "assets/fonts/DancingScript-SemiBold.ttf",
+      "sha1": "b5e71ddbaca9b4d5953f0c5e45bf326fb7df35ba"
+    }
+  ]
+}

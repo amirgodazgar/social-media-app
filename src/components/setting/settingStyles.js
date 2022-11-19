@@ -34,7 +34,7 @@ export const styles = ScaledSheet.create({
     color: '#b2b2b2b2',
     fontSize: '16@sr',
     fontWeight: '500',
-    marginLeft: '15@sr',
+    marginLeft: '14@sr',
   },
   listContainer: {
     justifyContent: 'center',

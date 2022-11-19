@@ -23,9 +23,9 @@ const App = () => {
       <SafeAreaView style={{flex: 1}}>
         {/* <Register /> */}
         {/* <Login /> */}
-        {/* <Profile /> */}
+        <Profile />
         {/* <Feed /> */}
-        <Setting />
+        {/* <Setting /> */}
         {/* <Welcome /> */}
       </SafeAreaView>
     </QueryClientProvider>

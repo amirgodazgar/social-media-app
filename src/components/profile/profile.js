@@ -5,6 +5,9 @@ import Text from '../text/text';
 import {styles} from './profileStyles';
 
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import List from 'react-native-vector-icons/FontAwesome';
+import Reels from 'react-native-vector-icons/FontAwesome';
+import UserTag from 'react-native-vector-icons/FontAwesome5';
 
 const Profile = () => {
   const info = [
@@ -16,12 +19,30 @@ const Profile = () => {
   const bio = ['React native developer', 'Guitar player', 'Agnostic'];
 
   const stories = [
-    {src: '', title: 'Me'},
-    {src: '', title: 'Guitar'},
-    {src: '', title: 'Friends'},
-    {src: '', title: 'Canada'},
-    {src: '', title: 'Movies'},
+    {src: require('../../assets/man2.jpg'), title: 'Me'},
+    {src: require('../../assets/guitar.jpg'), title: 'Guitar'},
+    {src: require('../../assets/friends.jpg'), title: 'Friends'},
+    {src: require('../../assets/canada.jpg'), title: 'Canada'},
+    {src: require('../../assets/movies.jpeg'), title: 'Movies'},
   ];
+
+  const posts = [
+    require('../../assets/post1.jpeg'),
+    require('../../assets/post4.jpeg'),
+    require('../../assets/post5.jpg'),
+    require('../../assets/post-pic2.jpg'),
+    require('../../assets/post2.jpg'),
+    require('../../assets/post-pic3.jpg'),
+    require('../../assets/guitar.jpg'),
+    require('../../assets/post-pic1.jpg'),
+    require('../../assets/canada.jpg'),
+    require('../../assets/movies.jpeg'),
+    require('../../assets/post-pic2.jpg'),
+    require('../../assets/post3.jpeg'),
+  ];
+
+  //avatar api
+  // https://api.lorem.space/image/face?w=150&h=151
 
   return (
     <Layout>
@@ -74,10 +95,7 @@ const Profile = () => {
             {stories.map(({src, title}) => (
               <TouchableOpacity activeOpacity={0.6} key={title}>
                 <View style={styles.story}>
-                  <Image
-                    style={styles.storyImage}
-                    source={require('../../assets/man2.jpg')}
-                  />
+                  <Image style={styles.storyImage} source={src} />
                   <Text>{title}</Text>
                 </View>
               </TouchableOpacity>
@@ -95,22 +113,19 @@ const Profile = () => {
           <View style={styles.postsContainer}>
             <View style={styles.postTabs}>
               <View style={[styles.postTab, styles.activeTab]}>
-                <Icon name="table" size={30} color="#eaeaea" />
+                <List name="table" size={30} color="#eaeaea" />
               </View>
               <View style={styles.postTab}>
-                <Icon name="table" size={30} color="#eaeaea" />
+                <Reels name="youtube-play" size={30} color="#B2B2B2" />
               </View>
               <View style={styles.postTab}>
-                <Icon name="table" size={30} color="#eaeaea" />
+                <UserTag name="user-tag" size={30} color="#B2B2B2" />
               </View>
             </View>
             <View style={styles.posts}>
-              {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map(i => (
-                <TouchableOpacity key={i} activeOpacity={0.6}>
-                  <Image
-                    style={styles.post}
-                    source={require('../../assets/post-pic1.jpg')}
-                  />
+              {posts.map((src, index) => (
+                <TouchableOpacity key={index.toString()} activeOpacity={0.6}>
+                  <Image style={styles.post} source={src} />
                 </TouchableOpacity>
               ))}
             </View>

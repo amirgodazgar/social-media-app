@@ -106,11 +106,12 @@ const Profile = () => {
             </View>
             <View style={styles.posts}>
               {[1, 2, 3, 4, 5, 6, 1, 2, 3, 4, 5, 6].map(i => (
-                <Image
-                  key={i}
-                  style={styles.post}
-                  source={require('../../assets/post-pic1.jpg')}
-                />
+                <TouchableOpacity key={i} activeOpacity={0.6}>
+                  <Image
+                    style={styles.post}
+                    source={require('../../assets/post-pic1.jpg')}
+                  />
+                </TouchableOpacity>
               ))}
             </View>
           </View>

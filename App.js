@@ -11,6 +11,7 @@ import {SafeAreaView} from 'react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import Feed from './src/components/feed/feed';
 import Login from './src/components/login/login';
+import Profile from './src/components/profile/profile';
 import Register from './src/components/register/register';
 import Welcome from './src/components/welcome/welcome';
 const queryClient = new QueryClient();
@@ -21,7 +22,8 @@ const App = () => {
       <SafeAreaView style={{flex: 1}}>
         {/* <Register /> */}
         {/* <Login /> */}
-        <Feed />
+        <Profile />
+        {/* <Feed /> */}
         {/* <Welcome /> */}
       </SafeAreaView>
     </QueryClientProvider>
@@ -29,9 +31,3 @@ const App = () => {
 };
 
 export default App;
-
-// {login ? (
-// <Welcome logout={logoutHandler} />
-// ) : (
-// <Login login={loginHandler} />
-// )}

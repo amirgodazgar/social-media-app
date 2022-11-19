@@ -4,7 +4,9 @@ import ToolBar from './tool-bar';
 import {styles} from './layoutStyles';
 import Stories from '../stories/stories';
 
-const Layout = ({children}) => {
+const Layout = ({children, storyMode}) => {
+  const storyModeOff = storyMode ? null : {height: '91%'};
+
   return (
     <View style={styles.layoutContainer}>
       <StatusBar
@@ -14,10 +16,12 @@ const Layout = ({children}) => {
         showHideTransition="fade"
         hidden={false}
       />
-      <View style={styles.header}>
-        <Stories />
-      </View>
-      <View style={styles.postsContainer}>{children}</View>
+      {storyMode ? (
+        <View style={styles.header}>
+          <Stories />
+        </View>
+      ) : null}
+      <View style={[styles.postsContainer, storyModeOff]}>{children}</View>
       <ToolBar />
     </View>
   );

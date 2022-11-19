@@ -23,6 +23,7 @@ const Text = ({type, children, style}) => {
     if (isSemiBold) return styles.semiBold;
     if (isBold) return styles.bold;
     if (isExtraBold) return styles.extraBold;
+    else return styles.regular;
   };
 
   return <CustomText style={[fontStyle(), style]}>{children}</CustomText>;

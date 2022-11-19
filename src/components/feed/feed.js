@@ -4,7 +4,7 @@ import Post from './post';
 
 const Feed = () => {
   return (
-    <Layout>
+    <Layout storyMode>
       <Post />
       {/* <Post /> */}
     </Layout>

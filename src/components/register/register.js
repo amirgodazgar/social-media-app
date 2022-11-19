@@ -50,7 +50,9 @@ const Register = () => {
   // };
 
   return (
-    <LinearGradient style={{flex: 1}} colors={['#181818', '#fe3d6d']}>
+    <LinearGradient
+      style={{flex: 1}}
+      colors={['#181818', '#fe3d6d', '#181818']}>
       <ScrollView contentContainerStyle={styles.viewContainer}>
         <StatusBar
           animated={true}

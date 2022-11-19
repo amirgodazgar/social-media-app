@@ -6,16 +6,11 @@ export const styles = ScaledSheet.create({
     alignContent: 'center',
     height: '100%',
     backgroundColor: '#181818',
-    //  backgroundColor: '#fe3d6d',
-    //  backgroundColor:"#EAEAEA"
-    //  backgroundColor:"#B2B2B2"
   },
   // -----------  MENU ----------------
   menuContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    //  borderWidth: 1,
-    //  borderColor: '#ffffff',
     marginVertical: '15@s',
   },
   usernameBox: {
@@ -37,8 +32,6 @@ export const styles = ScaledSheet.create({
   },
   // -----------  USER INFO--------------
   userInfoContainer: {
-    //  borderWidth: 1,
-    //  borderColor: '#ffffff',
     marginBottom: '15@s',
   },
   informationBox: {
@@ -91,8 +84,6 @@ export const styles = ScaledSheet.create({
   },
   // ----------- STORIES --------------
   storiesContainer: {
-    //  borderWidth: 1,
-    //  borderColor: '#ffffff',
     marginBottom: '15@s',
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -124,8 +115,6 @@ export const styles = ScaledSheet.create({
 
   // ----------- STORIES --------------
   postsContainer: {
-    //  borderWidth: 1,
-    //  borderColor: '#ffffff',
     justifyContent: 'center',
     alignContent: 'center',
   },

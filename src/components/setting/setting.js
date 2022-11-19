@@ -71,7 +71,7 @@ const Setting = () => {
               <TouchableOpacity key={title} activeOpacity={0.5}>
                 <View style={styles.listItem}>
                   <View style={{marginRight: icon === 'user-plus' ? 6 : 14}}>
-                    <Icon name={icon} size={25} color="#eaeaea" solid />
+                    <Icon name={icon} size={20} color="#eaeaea" solid />
                   </View>
                   <Text style={styles.listText}>{title}</Text>
                 </View>

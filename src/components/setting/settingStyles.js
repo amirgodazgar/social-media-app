@@ -48,7 +48,7 @@ export const styles = ScaledSheet.create({
   },
   listText: {
     color: '#eaeaea',
-    fontSize: '17@sr',
+    fontSize: '16@sr',
     fontWeight: '400',
   },
 });

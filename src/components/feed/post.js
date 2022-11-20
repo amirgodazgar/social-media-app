@@ -5,24 +5,25 @@ import {styles} from './postStyles';
 
 import Actions from './actions';
 
-const Post = () => {
+const Post = ({username, date, isFollow, avatarSrc, postSrc}) => {
+  const followed = isFollow ? {backgroundColor: '#303030'} : null;
+
   return (
     <View style={styles.postBox}>
       <View style={styles.userInfo}>
         <View style={styles.avatarBox}>
-          <Image
-            style={styles.avatar}
-            source={require('../../assets/man2.jpg')}
-          />
+          <Image style={styles.avatar} source={avatarSrc} />
           <View style={styles.userInfoTexts}>
-            <Text style={styles.username}>Bobby Fischer</Text>
-            <Text style={styles.time}>2 days ago</Text>
+            <Text style={styles.username}>{username}</Text>
+            <Text style={styles.time}>{date}</Text>
           </View>
         </View>
         <View style={styles.followBox}>
           <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
-            <View style={styles.followBtn}>
-              <Text style={styles.btnText}>Follow</Text>
+            <View style={[styles.followBtn, followed]}>
+              <Text style={styles.btnText}>
+                {isFollow ? 'Following' : 'Follow'}
+              </Text>
             </View>
           </TouchableOpacity>
         </View>
@@ -42,10 +43,7 @@ const Post = () => {
       </View>
       <View style={styles.photoContainer}>
         <View style={styles.postImage}>
-          <Image
-            style={styles.postImage}
-            source={require('../../assets/post-pic1.jpg')}
-          />
+          <Image style={styles.postImage} source={postSrc} />
         </View>
       </View>
       <Actions />

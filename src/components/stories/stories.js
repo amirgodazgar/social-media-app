@@ -5,11 +5,11 @@ import {styles} from './storiesStyles';
 
 const Stories = () => {
   const avatarList = [
-    require(`../../assets/girl.jpg`),
+    require(`../../assets/girl4.jpeg`),
     require(`../../assets/man.webp`),
-    require(`../../assets/man2.jpg`),
-    require(`../../assets/girl3.jpeg`),
+    require(`../../assets/girl.jpg`),
     require(`../../assets/man4.jpeg`),
+    require(`../../assets/girl3.jpeg`),
   ];
 
   return (
@@ -18,7 +18,7 @@ const Stories = () => {
         <View>
           <Image
             style={styles.myStoryAvatarStyle}
-            source={require(`../../assets/girl.jpg`)}
+            source={require('../../assets/man2.jpg')}
           />
           <View style={styles.myStoryAvatar}>
             <Icon size={10} style={styles.myStoryIcon} name="plus" />

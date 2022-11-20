@@ -5,6 +5,7 @@ export const styles = ScaledSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
+    height: '560@sr',
   },
   userInfo: {
     flex: 0.16,

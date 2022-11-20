@@ -11,6 +11,7 @@ import {SafeAreaView} from 'react-native';
 import {QueryClient, QueryClientProvider} from 'react-query';
 import Feed from './src/components/feed/feed';
 import Login from './src/components/login/login';
+import NewPost from './src/components/new-post/new-post';
 import Profile from './src/components/profile/profile';
 import Register from './src/components/register/register';
 import Setting from './src/components/setting/setting';
@@ -26,6 +27,7 @@ const App = () => {
         <Profile />
         {/* <Feed /> */}
         {/* <Setting /> */}
+        {/* <NewPost /> */}
         {/* <Welcome /> */}
       </SafeAreaView>
     </QueryClientProvider>

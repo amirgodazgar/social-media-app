@@ -22,7 +22,7 @@ export const styles = ScaledSheet.create({
     borderWidth: '1@sr',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#2192FF',
+    backgroundColor: '#fe3d6d',
   },
   myStoryIcon: {
     color: '#fffffff2',

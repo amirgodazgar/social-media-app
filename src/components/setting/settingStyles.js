@@ -22,7 +22,6 @@ export const styles = ScaledSheet.create({
   },
   searchBox: {
     backgroundColor: '#303030',
-    paddingVertical: '1@sr',
     paddingHorizontal: '10@sr',
     borderRadius: '5@sr',
     flexDirection: 'row',

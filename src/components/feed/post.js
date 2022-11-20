@@ -5,7 +5,15 @@ import {styles} from './postStyles';
 
 import Actions from './actions';
 
-const Post = ({username, date, isFollow, avatarSrc, postSrc}) => {
+const Post = ({
+  username,
+  title,
+  caption,
+  date,
+  isFollow,
+  avatarSrc,
+  postSrc,
+}) => {
   const followed = isFollow ? {backgroundColor: '#303030'} : null;
 
   return (
@@ -30,15 +38,10 @@ const Post = ({username, date, isFollow, avatarSrc, postSrc}) => {
       </View>
       <View style={styles.caption}>
         <View>
-          <Text style={styles.location}>USA, Los Angles</Text>
+          <Text style={styles.location}>{title}</Text>
         </View>
         <View>
-          <Text style={styles.summary}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae
-            aperiam, accusantium quaerat minima veritatis Eum expedita qui ullam
-            impedit, ea nam quae error, repellendus est nesciunt illum corrupti?
-            Qui, excepturi vitae...
-          </Text>
+          <Text style={styles.summary}>{caption}</Text>
         </View>
       </View>
       <View style={styles.photoContainer}>

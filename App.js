@@ -24,8 +24,8 @@ const App = () => {
       <SafeAreaView style={{flex: 1}}>
         {/* <Register /> */}
         {/* <Login /> */}
-        <Profile />
-        {/* <Feed /> */}
+        {/* <Profile /> */}
+        <Feed />
         {/* <Setting /> */}
         {/* <NewPost /> */}
         {/* <Welcome /> */}

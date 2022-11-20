@@ -144,9 +144,9 @@ const Login = () => {
         </LinearGradient>
 
         <View>
-          {/* {!isLoading && (
+          {!isLoading && (
             <Text style={{color: '#eee'}}>{String(data?.user?.username)}</Text>
-          )} */}
+          )}
         </View>
       </ScrollView>
     </LinearGradient>

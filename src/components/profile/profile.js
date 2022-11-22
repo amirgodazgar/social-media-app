@@ -8,8 +8,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import List from 'react-native-vector-icons/FontAwesome';
 import Reels from 'react-native-vector-icons/FontAwesome';
 import UserTag from 'react-native-vector-icons/FontAwesome5';
+import {useNavigation} from '@react-navigation/native';
 
-const Profile = ({navigation}) => {
+const Profile = () => {
+  const navigation = useNavigation();
+
   const info = [
     {num: 91, title: 'Posts'},
     {num: 485, title: 'Followers'},

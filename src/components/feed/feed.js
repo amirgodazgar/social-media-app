@@ -1,3 +1,4 @@
+import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import {getPosts} from '../../services/getPosts';
@@ -5,7 +6,8 @@ import Layout from '../layout/layout';
 import {getPostsMapper} from './mapper/getpostMapper';
 import Post from './post';
 
-const Feed = ({navigation}) => {
+const Feed = () => {
+  const navigation = useNavigation();
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     getPosts().then(res => {

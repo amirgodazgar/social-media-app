@@ -25,18 +25,57 @@ const queryClient = new QueryClient();
 const App = () => {
   const Stack = createNativeStackNavigator();
 
+  const headerStyles = {
+    headerStyle: {
+      backgroundColor: '#181818',
+    },
+    headerTintColor: '#eaeaea',
+  };
+
+  const screens = [
+    {
+      name: 'Register',
+      component: Register,
+    },
+    {
+      name: 'Login',
+      component: Login,
+    },
+    {
+      name: 'Profile',
+      component: Profile,
+    },
+    {
+      name: 'Feed',
+      component: Feed,
+    },
+    {
+      name: 'NewPost',
+      component: NewPost,
+    },
+    {
+      name: 'Post Detail',
+      component: PostDetail,
+    },
+    {
+      name: 'Setting',
+      component: Setting,
+    },
+  ];
+
   return (
     <NavigationContainer>
       <QueryClientProvider client={queryClient}>
         <SafeAreaView style={{flex: 1}}>
           <Stack.Navigator initialRouteName="Profile">
-            <Stack.Screen name="Register" component={Register} />
-            <Stack.Screen name="Login" component={Login} />
-            <Stack.Screen name="Profile" component={Profile} />
-            <Stack.Screen name="Feed" component={Feed} />
-            <Stack.Screen name="NewPost" component={NewPost} />
-            <Stack.Screen name="Post Detail" component={PostDetail} />
-            <Stack.Screen name="Setting" component={Setting} />
+            {screens.map(({name, component}) => (
+              <Stack.Screen
+                key={name}
+                name={name}
+                component={component}
+                options={headerStyles}
+              />
+            ))}
           </Stack.Navigator>
         </SafeAreaView>
       </QueryClientProvider>

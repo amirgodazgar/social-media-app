@@ -5,15 +5,7 @@ import {styles} from './postStyles';
 
 import Actions from './actions';
 
-const Post = ({
-  username,
-  title,
-  caption,
-  date,
-  isFollow,
-  avatarSrc,
-  postSrc,
-}) => {
+const Post = ({username, caption, date, isFollow, avatarSrc, postSrc}) => {
   const followed = isFollow ? {backgroundColor: '#303030'} : null;
 
   return (

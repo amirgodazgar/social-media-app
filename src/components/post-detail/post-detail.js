@@ -4,8 +4,16 @@ import Text from '../text/text';
 import {styles} from './post-detail-styles';
 import Actions from '../feed/actions';
 import Layout from '../layout/layout';
+import {
+  useFocusEffect,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 
-const PostDetail = ({route}) => {
+const PostDetail = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
+
   const {
     username,
     title,
@@ -14,6 +22,10 @@ const PostDetail = ({route}) => {
     avatarSrc,
     imageSrc: postSrc,
   } = route.params;
+
+  useFocusEffect(() => {
+    navigation.setOptions({title});
+  }, []);
 
   const isFollow = true;
   const followed = isFollow ? {backgroundColor: '#303030'} : null;

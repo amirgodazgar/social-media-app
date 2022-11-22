@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {ScrollView} from 'react-native';
+import {ScrollView, TouchableOpacity} from 'react-native';
 import {getPosts} from '../../services/getPosts';
 import Layout from '../layout/layout';
-import {convertDate, getPostsMapper, nameCreator} from './mapper/getpostMapper';
+import {getPostsMapper} from './mapper/getpostMapper';
 import Post from './post';
 
-const Feed = () => {
+const Feed = ({navigation}) => {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     getPosts().then(res => {
       const response = getPostsMapper(res);
       setPosts(response);
-      console.log('FEED', response);
+      // console.log('FEED', response);
     });
   }, []);
 
@@ -96,21 +96,139 @@ const Feed = () => {
     },
   };
 
+  const data = [
+    {
+      id: 1,
+      username: 'Bobby Fischer',
+      title: 'My love',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post1.jpeg'),
+      avatarSrc: require('../../assets/girl.jpg'),
+    },
+    {
+      id: 2,
+      username: 'Bobby Fischer',
+      title: 'My setup',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post5.jpg'),
+      avatarSrc: require('../../assets/man.webp'),
+    },
+    {
+      id: 3,
+      username: 'Bobby Fischer',
+      title: 'Los Angles',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post-pic3.jpg'),
+      avatarSrc: require('../../assets/girl4.jpeg'),
+    },
+    {
+      id: 4,
+      username: 'Bobby Fischer',
+      title: 'Friendship',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post-pic2.jpg'),
+      avatarSrc: require('../../assets/man4.jpeg'),
+    },
+    {
+      id: 5,
+      username: 'Bobby Fischer',
+      title: 'Space X',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post2.jpg'),
+      avatarSrc: require('../../assets/girl3.jpeg'),
+    },
+    {
+      id: 6,
+      username: 'Bobby Fischer',
+      title: 'Macbook M1 pro ',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post4.jpeg'),
+      avatarSrc: require('../../assets/man.webp'),
+    },
+    {
+      id: 7,
+      username: 'Bobby Fischer',
+      title: 'Hang out with friends',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/friends.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 8,
+      username: 'Bobby Fischer',
+      title: 'Travel to Canada',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/canada.jpg'),
+      avatarSrc: require('../../assets/girl.jpg'),
+    },
+    {
+      id: 9,
+      username: 'Bobby Fischer',
+      title: 'Breaking Bad',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/movies.jpeg'),
+      avatarSrc: require('../../assets/girl4.jpeg'),
+    },
+  ];
+
   return (
     <Layout storyMode>
       <ScrollView>
-        {posts.map(({id, username, title, caption, publishAt, image}) => (
-          <Post
-            key={id}
-            username={username}
-            title={title}
-            date={publishAt}
-            caption={caption}
-            isFollow={true}
-            avatarSrc={require('../../assets/girl3.jpeg')}
-            postSrc={require('../../assets/post-pic1.jpg')}
-          />
-        ))}
+        {data.map(
+          ({id, username, title, caption, publishAt, avatarSrc, imageSrc}) => (
+            <TouchableOpacity
+              key={id}
+              activeOpacity={0.6}
+              onPress={() =>
+                navigation.navigate('Post Detail', {
+                  id,
+                  username,
+                  title,
+                  caption,
+                  publishAt,
+                  avatarSrc,
+                  imageSrc,
+                })
+              }>
+              <Post
+                username={username}
+                title={title}
+                date={publishAt}
+                caption={caption}
+                isFollow={true}
+                avatarSrc={avatarSrc}
+                postSrc={imageSrc}
+              />
+            </TouchableOpacity>
+          ),
+        )}
       </ScrollView>
     </Layout>
   );

@@ -9,15 +9,13 @@ import List from 'react-native-vector-icons/FontAwesome';
 import Reels from 'react-native-vector-icons/FontAwesome';
 import UserTag from 'react-native-vector-icons/FontAwesome5';
 
-const Profile = () => {
+const Profile = ({navigation}) => {
   const info = [
     {num: 91, title: 'Posts'},
     {num: 485, title: 'Followers'},
     {num: 927, title: 'Following'},
   ];
-
   const bio = ['React native developer', 'Guitar player', 'Agnostic'];
-
   const stories = [
     {src: require('../../assets/man2.jpg'), title: 'Me'},
     {src: require('../../assets/guitar.jpg'), title: 'Guitar'},
@@ -25,20 +23,106 @@ const Profile = () => {
     {src: require('../../assets/canada.jpg'), title: 'Canada'},
     {src: require('../../assets/movies.jpeg'), title: 'Movies'},
   ];
-
   const posts = [
-    require('../../assets/post1.jpeg'),
-    require('../../assets/post4.jpeg'),
-    require('../../assets/post5.jpg'),
-    require('../../assets/post-pic2.jpg'),
-    require('../../assets/post2.jpg'),
-    require('../../assets/post-pic3.jpg'),
-    require('../../assets/guitar.jpg'),
-    require('../../assets/post-pic1.jpg'),
-    require('../../assets/canada.jpg'),
-    require('../../assets/movies.jpeg'),
-    require('../../assets/post-pic2.jpg'),
-    require('../../assets/post3.jpeg'),
+    {
+      id: 1,
+      username: 'Bobby Fischer',
+      title: 'My love',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post1.jpeg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 2,
+      username: 'Bobby Fischer',
+      title: 'My setup',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post5.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 3,
+      username: 'Bobby Fischer',
+      title: 'Los Angles',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post-pic3.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 4,
+      username: 'Bobby Fischer',
+      title: 'Friendship',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post-pic2.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 5,
+      username: 'Bobby Fischer',
+      title: 'Space X',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post2.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 6,
+      username: 'Bobby Fischer',
+      title: 'Macbook M1 pro ',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/post4.jpeg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 7,
+      username: 'Bobby Fischer',
+      title: 'Hang out with friends',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/friends.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 8,
+      username: 'Bobby Fischer',
+      title: 'Travel to Canada',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/canada.jpg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
+    {
+      id: 9,
+      username: 'Bobby Fischer',
+      title: 'Breaking Bad',
+      caption:
+        ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
+
+      publishAt: '3 Days ago',
+      imageSrc: require('../../assets/movies.jpeg'),
+      avatarSrc: require('../../assets/man2.jpg'),
+    },
   ];
 
   //avatar api
@@ -57,7 +141,9 @@ const Profile = () => {
               </TouchableOpacity>
             </View>
             <View style={styles.usernameBox}>
-              <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+              <TouchableOpacity
+                activeOpacity={0.6}
+                onPress={() => navigation.navigate('Feed')}>
                 <Icon name="bars" size={20} style={styles.icon} />
               </TouchableOpacity>
             </View>
@@ -123,11 +209,34 @@ const Profile = () => {
               </View>
             </View>
             <View style={styles.posts}>
-              {posts.map((src, index) => (
-                <TouchableOpacity key={index.toString()} activeOpacity={0.6}>
-                  <Image style={styles.post} source={src} />
-                </TouchableOpacity>
-              ))}
+              {posts.map(
+                ({
+                  id,
+                  username,
+                  title,
+                  caption,
+                  publishAt,
+                  avatarSrc,
+                  imageSrc,
+                }) => (
+                  <TouchableOpacity
+                    key={id}
+                    activeOpacity={0.6}
+                    onPress={() =>
+                      navigation.navigate('Post Detail', {
+                        id,
+                        username,
+                        title,
+                        caption,
+                        publishAt,
+                        avatarSrc,
+                        imageSrc,
+                      })
+                    }>
+                    <Image style={styles.post} source={imageSrc} />
+                  </TouchableOpacity>
+                ),
+              )}
             </View>
           </View>
         </View>

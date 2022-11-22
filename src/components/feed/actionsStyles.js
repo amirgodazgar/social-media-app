@@ -2,7 +2,7 @@ import {ScaledSheet} from 'react-native-size-matters';
 
 export const styles = ScaledSheet.create({
   actinsContainer: {
-    flex: 0.07,
+    flex: 0.1,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

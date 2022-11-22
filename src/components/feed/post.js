@@ -38,10 +38,7 @@ const Post = ({
       </View>
       <View style={styles.caption}>
         <View>
-          <Text style={styles.location}>{title}</Text>
-        </View>
-        <View>
-          <Text style={styles.summary}>{caption}</Text>
+          <Text style={styles.summary}>{caption.substring(0, 40)}...</Text>
         </View>
       </View>
       <View style={styles.photoContainer}>

@@ -143,13 +143,6 @@ const Profile = () => {
                 <Icon name="chevron-down" size={15} style={styles.icon} />
               </TouchableOpacity>
             </View>
-            <View style={styles.usernameBox}>
-              <TouchableOpacity
-                activeOpacity={0.6}
-                onPress={() => navigation.navigate('Feed')}>
-                <Icon name="bars" size={20} style={styles.icon} />
-              </TouchableOpacity>
-            </View>
           </View>
 
           <View style={styles.userInfoContainer}>

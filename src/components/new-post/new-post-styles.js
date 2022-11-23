@@ -3,13 +3,13 @@ import {ScaledSheet} from 'react-native-size-matters';
 export const styles = ScaledSheet.create({
   mainContainer: {
     flex: 1,
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
     alignContent: 'center',
     height: '100%',
     backgroundColor: '#181818',
   },
   headerBox: {
-    flex: 0.1,
+    flex: 0.05,
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',

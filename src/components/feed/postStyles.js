@@ -14,7 +14,6 @@ export const styles = ScaledSheet.create({
     alignContent: 'center',
     paddingHorizontal: '5@sr',
     paddingVertical: '2@sr',
-    // backgroundColor: 'red',
   },
   avatarBox: {
     width: '70%',

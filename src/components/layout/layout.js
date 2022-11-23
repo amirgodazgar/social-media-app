@@ -1,6 +1,5 @@
 import React from 'react';
 import {StatusBar, View} from 'react-native';
-import ToolBar from './tool-bar';
 import {styles} from './layoutStyles';
 import Stories from '../stories/stories';
 
@@ -22,7 +21,6 @@ const Layout = ({children, storyMode}) => {
         </View>
       ) : null}
       <View style={[styles.postsContainer, storyModeOff]}>{children}</View>
-      <ToolBar />
     </View>
   );
 };

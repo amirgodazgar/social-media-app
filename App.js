@@ -5,33 +5,23 @@
  * @format
  * @flow strict-local
  */
-
-import React, {useCallback, useState} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {SafeAreaView} from 'react-native';
+
 import {QueryClient, QueryClientProvider} from 'react-query';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Feed from './src/components/feed/feed';
 import Login from './src/components/login/login';
 import NewPost from './src/components/new-post/new-post';
 import Profile from './src/components/profile/profile';
 import Register from './src/components/register/register';
 import Setting from './src/components/setting/setting';
-import Welcome from './src/components/welcome/welcome';
 import PostDetail from './src/components/post-detail/post-detail';
+import {SafeAreaView} from 'react-native-safe-area-context';
+import RootNavigation from './src/navigators/root-navigator';
 
 const queryClient = new QueryClient();
 
 const App = () => {
-  const Stack = createNativeStackNavigator();
-
-  const headerStyles = {
-    headerStyle: {
-      backgroundColor: '#181818',
-    },
-    headerTintColor: '#eaeaea',
-  };
-
   const screens = [
     {
       name: 'Register',
@@ -67,16 +57,7 @@ const App = () => {
     <NavigationContainer>
       <QueryClientProvider client={queryClient}>
         <SafeAreaView style={{flex: 1}}>
-          <Stack.Navigator initialRouteName="Profile">
-            {screens.map(({name, component}) => (
-              <Stack.Screen
-                key={name}
-                name={name}
-                component={component}
-                options={headerStyles}
-              />
-            ))}
-          </Stack.Navigator>
+          <RootNavigation />
         </SafeAreaView>
       </QueryClientProvider>
     </NavigationContainer>

@@ -25,7 +25,7 @@ const PostDetail = () => {
 
   useFocusEffect(() => {
     navigation.setOptions({title});
-  }, []);
+  });
 
   const isFollow = true;
   const followed = isFollow ? {backgroundColor: '#303030'} : null;

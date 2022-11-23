@@ -9,28 +9,13 @@ export const styles = ScaledSheet.create({
     backgroundColor: '#181818',
   },
   header: {
-    height: '10%',
+    height: '12%',
   },
   postsContainer: {
-    height: '81%',
+    height: '88%',
   },
   toolbarBox: {
-    height: '9%',
-    borderTopWidth: '1@sr',
-    borderColor: '#eaeaea2f',
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    alignItems: 'center',
-  },
-  toolbarTouchableBox: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  toolbarIcon: {
-    marginBottom: '3@sr',
-  },
-  actionText: {
-    fontSize: '12@sr',
-    fontWeight: '400',
+    flex: 1,
+    fontSize: '16@sr',
   },
 });

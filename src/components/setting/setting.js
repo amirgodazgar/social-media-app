@@ -49,12 +49,6 @@ const Setting = () => {
     <Layout>
       <ScrollView>
         <View style={styles.mainContainer}>
-          <View style={styles.goBackContainer}>
-            <TouchableOpacity activeOpacity={0.5}>
-              <Icon name="arrow-left" size={20} color="#eaeaea" />
-            </TouchableOpacity>
-            <Text style={styles.goBackText}>Setting</Text>
-          </View>
           <View style={styles.searchContainer}>
             <View style={styles.searchBox}>
               <Icon name="search" color="#b2b2b2b2" size={16} />

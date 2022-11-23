@@ -8,18 +8,7 @@ export const styles = ScaledSheet.create({
     backgroundColor: '#181818',
   },
   // -----------  MENU ----------------
-  goBackContainer: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    marginTop: '15@s',
-  },
-  goBackText: {
-    color: '#eaeaea',
-    fontSize: '18@sr',
-    fontWeight: '500',
-    marginLeft: '15@sr',
-  },
+
   searchBox: {
     backgroundColor: '#303030',
     paddingHorizontal: '10@sr',
@@ -27,7 +16,7 @@ export const styles = ScaledSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    marginVertical: '15@sr',
+    marginBottom: '15@sr',
   },
   searchText: {
     color: '#b2b2b2b2',

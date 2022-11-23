@@ -2,16 +2,15 @@ import {ScaledSheet} from 'react-native-size-matters';
 
 export const styles = ScaledSheet.create({
   mainContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
-    height: '100%',
     backgroundColor: '#181818',
   },
   // -----------  MENU ----------------
   menuContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    marginVertical: '15@s',
   },
   usernameBox: {
     flexDirection: 'row',

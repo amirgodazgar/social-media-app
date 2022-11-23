@@ -11,10 +11,7 @@ const NewPost = () => {
       <View style={styles.mainContainer}>
         <View style={styles.headerBox}>
           <View style={styles.goBack}>
-            <TouchableOpacity activeOpacity={0.5}>
-              <Icon name="arrow-left" size={20} color="#eaeaea" />
-            </TouchableOpacity>
-            <Text style={styles.backText}>New Post</Text>
+            <Text style={styles.backText}>Send Post</Text>
           </View>
           <TouchableOpacity activeOpacity={0.5}>
             <Icon name="check" size={20} color="#fe3d6d" />

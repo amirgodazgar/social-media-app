@@ -7,7 +7,6 @@
  */
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-
 import {QueryClient, QueryClientProvider} from 'react-query';
 import Feed from './src/components/feed/feed';
 import Login from './src/components/login/login';

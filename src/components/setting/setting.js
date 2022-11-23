@@ -46,35 +46,31 @@ const Setting = () => {
   ];
 
   return (
-    <Layout>
-      <ScrollView>
-        <View style={styles.mainContainer}>
-          <View style={styles.searchContainer}>
-            <View style={styles.searchBox}>
-              <Icon name="search" color="#b2b2b2b2" size={16} />
-              <TextInput
-                placeholder="Search"
-                placeholderTextColor="#b2b2b2b2"
-                style={styles.searchText}
-              />
-            </View>
-          </View>
-
-          <View style={styles.listContainer}>
-            {listItems.map(({icon, title}) => (
-              <TouchableOpacity key={title} activeOpacity={0.5}>
-                <View style={styles.listItem}>
-                  <View style={{marginRight: icon === 'user-plus' ? 6 : 14}}>
-                    <Icon name={icon} size={20} color="#eaeaea" solid />
-                  </View>
-                  <Text style={styles.listText}>{title}</Text>
-                </View>
-              </TouchableOpacity>
-            ))}
-          </View>
+    <View style={styles.mainContainer}>
+      <View style={styles.searchContainer}>
+        <View style={styles.searchBox}>
+          <Icon name="search" color="#b2b2b2b2" size={16} />
+          <TextInput
+            placeholder="Search"
+            placeholderTextColor="#b2b2b2b2"
+            style={styles.searchText}
+          />
         </View>
-      </ScrollView>
-    </Layout>
+      </View>
+
+      <View style={styles.listContainer}>
+        {listItems.map(({icon, title}) => (
+          <TouchableOpacity key={title} activeOpacity={0.5}>
+            <View style={styles.listItem}>
+              <View style={{marginRight: icon === 'user-plus' ? 6 : 14}}>
+                <Icon name={icon} size={20} color="#eaeaea" solid />
+              </View>
+              <Text style={styles.listText}>{title}</Text>
+            </View>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
   );
 };
 

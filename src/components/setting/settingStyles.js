@@ -6,6 +6,7 @@ export const styles = ScaledSheet.create({
     alignContent: 'center',
     height: '100%',
     backgroundColor: '#181818',
+    paddingHorizontal: '8@s',
   },
   // -----------  MENU ----------------
 
@@ -17,6 +18,7 @@ export const styles = ScaledSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     marginBottom: '15@sr',
+    width: '100%',
   },
   searchText: {
     color: '#b2b2b2b2',

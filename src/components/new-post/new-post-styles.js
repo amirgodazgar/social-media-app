@@ -7,6 +7,7 @@ export const styles = ScaledSheet.create({
     alignContent: 'center',
     height: '100%',
     backgroundColor: '#181818',
+    paddingHorizontal: '8@s',
   },
   headerBox: {
     flex: 0.05,

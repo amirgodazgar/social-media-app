@@ -132,112 +132,110 @@ const Profile = () => {
   // https://api.lorem.space/image/face?w=150&h=151
 
   return (
-    <Layout>
-      <ScrollView>
-        <View style={styles.mainContainer}>
-          <View style={styles.menuContainer}>
-            <View style={styles.usernameBox}>
-              <Icon name="lock" size={15} style={styles.icon} />
-              <Text style={styles.username}>Bobby.Fischer</Text>
-              <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
-                <Icon name="chevron-down" size={15} style={styles.icon} />
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.userInfoContainer}>
-            <View style={styles.informationBox}>
-              <Image
-                style={styles.avatar}
-                source={require('../../assets/man2.jpg')}
-              />
-              {info.map(({num, title}) => (
-                <View style={styles.information} key={title}>
-                  <Text style={styles.infoNumber}>{num}</Text>
-                  <Text style={styles.infoText}>{title}</Text>
-                </View>
-              ))}
-            </View>
-            <View style={styles.bioBox}>
-              <Text style={styles.bioName}>Bobby Fischer</Text>
-              {bio.map(i => (
-                <Text key={i} style={styles.bioText}>
-                  {i}
-                </Text>
-              ))}
-            </View>
-            <View>
-              <TouchableOpacity style={styles.EditProfileBtn}>
-                <Text style={styles.editText}>Edit profile</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-
-          <View style={styles.storiesContainer}>
-            {stories.map(({src, title}) => (
-              <TouchableOpacity activeOpacity={0.6} key={title}>
-                <View style={styles.story}>
-                  <Image style={styles.storyImage} source={src} />
-                  <Text>{title}</Text>
-                </View>
-              </TouchableOpacity>
-            ))}
+    <ScrollView>
+      <View style={styles.mainContainer}>
+        <View style={styles.menuContainer}>
+          <View style={styles.usernameBox}>
+            <Icon name="lock" size={15} style={styles.icon} />
+            <Text style={styles.username}>Bobby.Fischer</Text>
             <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
-              <View style={styles.story}>
-                <View style={styles.addStory}>
-                  <Icon name="plus" style={styles.addStoryIcon} />
-                </View>
-                <Text>New</Text>
-              </View>
+              <Icon name="chevron-down" size={15} style={styles.icon} />
             </TouchableOpacity>
           </View>
+        </View>
 
-          <View style={styles.postsContainer}>
-            <View style={styles.postTabs}>
-              <View style={[styles.postTab, styles.activeTab]}>
-                <List name="table" size={30} color="#eaeaea" />
+        <View style={styles.userInfoContainer}>
+          <View style={styles.informationBox}>
+            <Image
+              style={styles.avatar}
+              source={require('../../assets/man2.jpg')}
+            />
+            {info.map(({num, title}) => (
+              <View style={styles.information} key={title}>
+                <Text style={styles.infoNumber}>{num}</Text>
+                <Text style={styles.infoText}>{title}</Text>
               </View>
-              <View style={styles.postTab}>
-                <Reels name="youtube-play" size={30} color="#B2B2B2" />
-              </View>
-              <View style={styles.postTab}>
-                <UserTag name="user-tag" size={30} color="#B2B2B2" />
-              </View>
-            </View>
-            <View style={styles.posts}>
-              {posts.map(
-                ({
-                  id,
-                  username,
-                  title,
-                  caption,
-                  publishAt,
-                  avatarSrc,
-                  imageSrc,
-                }) => (
-                  <TouchableOpacity
-                    key={id}
-                    activeOpacity={0.6}
-                    onPress={() =>
-                      navigation.navigate('Post Detail', {
-                        id,
-                        username,
-                        title,
-                        caption,
-                        publishAt,
-                        avatarSrc,
-                        imageSrc,
-                      })
-                    }>
-                    <Image style={styles.post} source={imageSrc} />
-                  </TouchableOpacity>
-                ),
-              )}
-            </View>
+            ))}
+          </View>
+          <View style={styles.bioBox}>
+            <Text style={styles.bioName}>Bobby Fischer</Text>
+            {bio.map(i => (
+              <Text key={i} style={styles.bioText}>
+                {i}
+              </Text>
+            ))}
+          </View>
+          <View>
+            <TouchableOpacity style={styles.EditProfileBtn}>
+              <Text style={styles.editText}>Edit profile</Text>
+            </TouchableOpacity>
           </View>
         </View>
-      </ScrollView>
-    </Layout>
+
+        <View style={styles.storiesContainer}>
+          {stories.map(({src, title}) => (
+            <TouchableOpacity activeOpacity={0.6} key={title}>
+              <View style={styles.story}>
+                <Image style={styles.storyImage} source={src} />
+                <Text>{title}</Text>
+              </View>
+            </TouchableOpacity>
+          ))}
+          <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
+            <View style={styles.story}>
+              <View style={styles.addStory}>
+                <Icon name="plus" style={styles.addStoryIcon} />
+              </View>
+              <Text>New</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
+
+        <View style={styles.postsContainer}>
+          <View style={styles.postTabs}>
+            <View style={[styles.postTab, styles.activeTab]}>
+              <List name="table" size={30} color="#eaeaea" />
+            </View>
+            <View style={styles.postTab}>
+              <Reels name="youtube-play" size={30} color="#B2B2B2" />
+            </View>
+            <View style={styles.postTab}>
+              <UserTag name="user-tag" size={30} color="#B2B2B2" />
+            </View>
+          </View>
+          <View style={styles.posts}>
+            {posts.map(
+              ({
+                id,
+                username,
+                title,
+                caption,
+                publishAt,
+                avatarSrc,
+                imageSrc,
+              }) => (
+                <TouchableOpacity
+                  key={id}
+                  activeOpacity={0.6}
+                  onPress={() =>
+                    navigation.navigate('Post Detail', {
+                      id,
+                      username,
+                      title,
+                      caption,
+                      publishAt,
+                      avatarSrc,
+                      imageSrc,
+                    })
+                  }>
+                  <Image style={styles.post} source={imageSrc} />
+                </TouchableOpacity>
+              ),
+            )}
+          </View>
+        </View>
+      </View>
+    </ScrollView>
   );
 };
 

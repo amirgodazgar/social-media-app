@@ -6,6 +6,7 @@ import {View} from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import Feed from '../components/feed/feed';
 import NewPost from '../components/new-post/new-post';
+import PostDetail from '../components/post-detail/post-detail';
 import Profile from '../components/profile/profile';
 import Setting from '../components/setting/setting';
 
@@ -13,21 +14,40 @@ const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileStack = createNativeStackNavigator();
 
+const ProfileDrawerScreen = () => (
+  <Drawer.Navigator
+    screenOptions={{
+      drawerStyle: {
+        backgroundColor: '#181818',
+      },
+      drawerActiveTintColor: '#eaeaea',
+      drawerInactiveTintColor: '#808080',
+      headerStyle: {
+        backgroundColor: '#181818',
+      },
+      headerTintColor: '#eaeaea',
+    }}>
+    <Drawer.Screen name="Profile" component={Profile} />
+    <Drawer.Screen name="Setting" component={Setting} />
+  </Drawer.Navigator>
+);
+
 const ProfileStackScreen = () => {
   return (
-    <Drawer.Navigator
+    <ProfileStack.Navigator
       screenOptions={{
-        drawerStyle: {
-          backgroundColor: '#181818',
-        },
         headerStyle: {
           backgroundColor: '#181818',
         },
         headerTintColor: '#eaeaea',
       }}>
-      <Drawer.Screen name="Profile" component={Profile} />
-      <Drawer.Screen name="Setting" component={Setting} />
-    </Drawer.Navigator>
+      <ProfileStack.Screen
+        name="Main:Profile"
+        component={ProfileDrawerScreen}
+        options={{headerShown: false}}
+      />
+      <ProfileStack.Screen name="Post Detail" component={PostDetail} />
+    </ProfileStack.Navigator>
   );
 };
 

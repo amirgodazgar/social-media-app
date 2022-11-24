@@ -10,9 +10,17 @@ import PostDetail from '../components/post-detail/post-detail';
 import Profile from '../components/profile/profile';
 import Setting from '../components/setting/setting';
 
+const headerStyles = {
+  headerStyle: {
+    backgroundColor: '#181818',
+  },
+  headerTintColor: '#eaeaea',
+};
+
 const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileStack = createNativeStackNavigator();
+const FeedStack = createNativeStackNavigator();
 
 const ProfileDrawerScreen = () => (
   <Drawer.Navigator
@@ -46,10 +54,21 @@ const ProfileStackScreen = () => {
         component={ProfileDrawerScreen}
         options={{headerShown: false}}
       />
-      <ProfileStack.Screen name="Post Detail" component={PostDetail} />
+      <ProfileStack.Screen name="Profile:PostDetail" component={PostDetail} />
     </ProfileStack.Navigator>
   );
 };
+
+const FeedStackNavigator = () => (
+  <FeedStack.Navigator>
+    <FeedStack.Screen name="Feed" options={headerStyles} component={Feed} />
+    <FeedStack.Screen
+      name="Feed:PostDetail"
+      options={headerStyles}
+      component={PostDetail}
+    />
+  </FeedStack.Navigator>
+);
 
 const RootNavigation = () => {
   const getIcon = (routeName, isFocused) => {
@@ -87,8 +106,16 @@ const RootNavigation = () => {
           },
           headerTintColor: '#eaeaea',
         })}>
-        <Tab.Screen name="Feed" component={Feed} />
-        <Tab.Screen name="NewPost" component={NewPost} />
+        <Tab.Screen
+          name="Feed"
+          options={{headerShown: false}}
+          component={FeedStackNavigator}
+        />
+        <Tab.Screen
+          name="NewPost"
+          options={{title: 'Create a new post'}}
+          component={NewPost}
+        />
         <Tab.Screen
           name="Profile:Root"
           component={ProfileStackScreen}

@@ -102,7 +102,7 @@ const Feed = () => {
     {
       id: 1,
       username: 'Bobby Fischer',
-      title: 'My love',
+      title: 'My close friend',
       caption:
         ' Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam perspiciatis ratione minus repudiandae libero, sed incidunt natus aperiam nisi tempore...',
 
@@ -209,7 +209,7 @@ const Feed = () => {
               key={id}
               activeOpacity={0.6}
               onPress={() =>
-                navigation.navigate('Post Detail', {
+                navigation.navigate('Feed:PostDetail', {
                   id,
                   username,
                   title,

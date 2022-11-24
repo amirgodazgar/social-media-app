@@ -1,9 +1,7 @@
 import React from 'react';
 import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
-import Layout from '../layout/layout';
-import Text from '../text/text';
+import Text from '../../components/text/text';
 import {styles} from './profileStyles';
-
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import List from 'react-native-vector-icons/FontAwesome';
 import Reels from 'react-native-vector-icons/FontAwesome';

@@ -1,6 +1,5 @@
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
-
 import {
   StatusBar,
   View,
@@ -9,11 +8,9 @@ import {
   Button,
   ScrollView,
 } from 'react-native';
-import Text from '../text/text';
+import Text from '../../components/text/text';
 import {styles} from './registerStyles';
-
 import Icon from 'react-native-vector-icons/FontAwesome5';
-
 import {useMutation} from 'react-query';
 import {getRegister} from '../../services/auth';
 import {Controller, useForm} from 'react-hook-form';

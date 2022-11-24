@@ -1,9 +1,8 @@
 import React from 'react';
 import {Image, TextInput, TouchableOpacity, View} from 'react-native';
-import Text from '../text/text';
+import Text from '../../components/text/text';
 import {styles} from './new-post-styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Layout from '../layout/layout';
 
 const NewPost = () => {
   return (

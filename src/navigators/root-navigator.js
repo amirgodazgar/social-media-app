@@ -2,8 +2,8 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import React from 'react';
-import {View} from 'react-native';
-
+import Login from '../screens/login/login';
+import Register from '../screens/register/register';
 import Feed from '../screens/feed/feed';
 import NewPost from '../screens/new-post/new-post';
 import PostDetail from '../screens/post-detail/post-detail';
@@ -21,6 +21,8 @@ const Tab = createBottomTabNavigator();
 const Drawer = createDrawerNavigator();
 const ProfileStack = createNativeStackNavigator();
 const FeedStack = createNativeStackNavigator();
+const AuthenticationStack = createNativeStackNavigator();
+// const RootStack = createNativeStackNavigator();
 
 const ProfileDrawerScreen = () => (
   <Drawer.Navigator screenOptions={drawerStyles}>
@@ -56,35 +58,46 @@ const FeedStackNavigator = () => (
   </FeedStack.Navigator>
 );
 
-const RootNavigation = () => {
-  return (
-    <View style={{flex: 1}}>
-      <Tab.Navigator
-        initialRouteName={SCREEN_NAMES.PROFILE_ROOT}
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused}) => {
-            return getBottomTabIcon(route.name, focused);
-          },
-          ...BottomTabStyles,
-        })}>
-        <Tab.Screen
-          name={SCREEN_NAMES.FEED_ROOT}
-          options={{headerShown: false}}
-          component={FeedStackNavigator}
-        />
-        <Tab.Screen
-          name={SCREEN_NAMES.NEW_POST_ROOT}
-          options={{title: 'Create a new post'}}
-          component={NewPost}
-        />
-        <Tab.Screen
-          name={SCREEN_NAMES.PROFILE_ROOT}
-          component={ProfileStackScreen}
-          options={{headerShown: false}}
-        />
-      </Tab.Navigator>
-    </View>
-  );
-};
+export const AuthStack = () => (
+  <AuthenticationStack.Navigator initialRouteName={SCREEN_NAMES.REGISTER}>
+    <AuthenticationStack.Screen name={SCREEN_NAMES.LOGIN} component={Login} />
+    <AuthenticationStack.Screen
+      name={SCREEN_NAMES.REGISTER}
+      component={Register}
+    />
+  </AuthenticationStack.Navigator>
+);
 
-export default RootNavigation;
+export const AppStack = () => (
+  <Tab.Navigator
+    initialRouteName={SCREEN_NAMES.PROFILE_ROOT}
+    screenOptions={({route}) => ({
+      tabBarIcon: ({focused}) => {
+        return getBottomTabIcon(route.name, focused);
+      },
+      ...BottomTabStyles,
+    })}>
+    <Tab.Screen
+      name={SCREEN_NAMES.FEED_ROOT}
+      options={{headerShown: false}}
+      component={FeedStackNavigator}
+    />
+    <Tab.Screen
+      name={SCREEN_NAMES.NEW_POST_ROOT}
+      options={{title: 'Create a new post'}}
+      component={NewPost}
+    />
+    <Tab.Screen
+      name={SCREEN_NAMES.PROFILE_ROOT}
+      component={ProfileStackScreen}
+      options={{headerShown: false}}
+    />
+  </Tab.Navigator>
+);
+
+// export const RootNavigation = () => {
+//   <RootStack.Navigator>
+//     <RootStack.Screen name="App" component={AppStack} />
+//     <RootStack.Screen name="Auth" component={AuthStack} />
+//   </RootStack.Navigator>;
+// };

@@ -1,8 +1,7 @@
 import React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
-import Text from '../text/text';
+import Text from '../../components/text/text';
 import {styles} from './postStyles';
-
 import Actions from './actions';
 
 const Post = ({username, caption, date, isFollow, avatarSrc, postSrc}) => {

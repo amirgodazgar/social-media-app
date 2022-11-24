@@ -2,7 +2,7 @@ import React from 'react';
 import {TouchableOpacity, View} from 'react-native';
 import {styles} from './actionsStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import Text from '../text/text';
+import Text from '../../components/text/text';
 
 const Actions = () => {
   return (

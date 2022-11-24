@@ -10,11 +10,11 @@ import {
   ActivityIndicator,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import Text from '../text/text';
+import Text from '../../components/text/text';
+import {login} from '../../services/auth';
 import {styles} from './loginStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
-import {login} from '../../services/auth';
 import {useMutation} from 'react-query';
 
 const Login = () => {

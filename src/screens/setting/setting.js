@@ -1,7 +1,6 @@
 import React from 'react';
-import {ScrollView, View, TouchableOpacity, TextInput} from 'react-native';
-import Layout from '../layout/layout';
-import Text from '../text/text';
+import {View, TouchableOpacity, TextInput} from 'react-native';
+import Text from '../../components/text/text';
 import {styles} from './settingStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 

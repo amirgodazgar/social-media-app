@@ -1,6 +1,6 @@
 import React from 'react';
 import {Image, TouchableOpacity, View} from 'react-native';
-import Text from '../text/text';
+import Text from '../../components/text/text';
 import {styles} from './post-detail-styles';
 import Actions from '../feed/actions';
 import {

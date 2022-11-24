@@ -2,8 +2,8 @@ import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
 import {ScrollView, TouchableOpacity} from 'react-native';
 import {getPosts} from '../../services/getPosts';
-import Layout from '../layout/layout';
-import {getPostsMapper} from './mapper/getpostMapper';
+import Layout from '../../components/layout/layout';
+import {getPostsMapper} from './mapper/get-post-mapper';
 import Post from './post';
 
 const Feed = () => {

@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   StatusBar,
   View,
@@ -11,34 +10,28 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from '../../components/text/text';
-import {login} from '../../services/auth';
 import {styles} from './loginStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
-import {useMutation} from 'react-query';
+import {useLogin} from '../../hooks/useLogin';
+import useAuthStore from '../../store/store';
 
 const Login = () => {
+  const userInfo = useAuthStore(state => state.userInfo);
   const {control, handleSubmit} = useForm({
     defaultValues: {
-      email: '',
+      identifier: '',
       password: '',
     },
   });
-  const {mutate, isLoading, data, error, isError} = useMutation(login, {
-    // onSuccess: data => console.log('ssssss', data),
-    // onError: err => console.log('ddddd', err),
-  });
 
-  const onSubmit = ({email, password}) => {
-    mutate({
-      identifier: email,
-      password: password,
-    });
+  const {setUserInfo, isLoading} = useLogin();
+
+  const onSubmit = ({identifier, password}) => {
+    setUserInfo(identifier, password);
   };
 
-  // console.log('roooot', data);
-  // console.log('error', error);
-
+  console.log('roooot', userInfo, isLoading);
   // const res = {
   //   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY4NTk4ODk0LCJleHAiOjE2NzExOTA4OTR9.XzLnSLkMa3wn5P49BVi574mx2ARLKVUi5-rvVL08fAU',
   //   user: {
@@ -74,10 +67,20 @@ const Login = () => {
               {isLoading ? (
                 <ActivityIndicator size="large" color="#EAEAEA" />
               ) : (
-                <Image
-                  style={styles.avatar}
-                  source={require('../../assets/login.png')}
-                />
+                !userInfo && (
+                  <Image
+                    style={styles.avatar}
+                    source={require('../../assets/login.png')}
+                  />
+                )
+              )}
+              {userInfo && (
+                <View>
+                  <Text style={styles.subHeader}>
+                    Welcome {userInfo.username}
+                  </Text>
+                  <Text style={styles.subHeader}>Email : {userInfo.email}</Text>
+                </View>
               )}
             </View>
             <View style={styles.avatarContainer}>
@@ -89,7 +92,7 @@ const Login = () => {
                 solid
               />
               <Controller
-                name="email"
+                name="identifier"
                 control={control}
                 rules={{
                   required: true,
@@ -144,7 +147,7 @@ const Login = () => {
 
         <View>
           {!isLoading && (
-            <Text style={{color: '#eee'}}>{String(data?.user?.username)}</Text>
+            <Text style={{color: '#eee'}}>{String(userInfo?.username)}</Text>
           )}
         </View>
       </ScrollView>

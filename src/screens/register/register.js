@@ -14,8 +14,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useMutation} from 'react-query';
 import {getRegister} from '../../services/auth';
 import {Controller, useForm} from 'react-hook-form';
+import useAuthStore from '../../store/store';
 
 const Register = () => {
+  const signUp = useAuthStore(state => state.signUp);
+
   const {control, handleSubmit} = useForm({
     defaultValues: {
       email: '',
@@ -27,11 +30,14 @@ const Register = () => {
   const {mutate, isLoading, data, error, isError} = useMutation(getRegister);
 
   const onSubmit = ({email, username, password}) => {
-    mutate({email, username, password});
+    mutate(
+      {email, username, password},
+      {
+        onSuccess: res => signUp(res?.jwt),
+      },
+    );
   };
-
-  // console.log(data);
-
+  console.log(data);
   // const res = {
   //   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImlhdCI6MTY2ODU4NDQ3NiwiZXhwIjoxNjcxMTc2NDc2fQ.v_grLxnxWZ81PQMC1T9kK692M2Nxme85OLseaVSfwjs',
   //   user: {
@@ -157,7 +163,8 @@ const Register = () => {
 
             <Button
               onPress={handleSubmit(onSubmit)}
-              title="Login"
+              // onPress={() => signUp('true')}
+              title="Register"
               color="#fe3d6c"
             />
           </View>

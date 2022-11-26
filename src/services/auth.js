@@ -12,7 +12,6 @@ export const getRegister = async userInfo => {
 export const login = async userInfo => {
   try {
     const response = await https.post('/auth/local', userInfo);
-    console.log(response.error);
     return response.data;
   } catch (error) {
     console.log(error);

@@ -3,8 +3,11 @@ import {View, TouchableOpacity, TextInput} from 'react-native';
 import Text from '../../components/text/text';
 import {styles} from './settingStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import useAuthStore from '../../store/store';
 
 const Setting = () => {
+  const signOut = useAuthStore(state => state.signOut);
+
   const listItems = [
     {
       icon: 'user-plus',
@@ -59,7 +62,10 @@ const Setting = () => {
 
       <View style={styles.listContainer}>
         {listItems.map(({icon, title}) => (
-          <TouchableOpacity key={title} activeOpacity={0.5}>
+          <TouchableOpacity
+            key={title}
+            activeOpacity={0.5}
+            onPress={title === 'Logout' ? () => signOut() : null}>
             <View style={styles.listItem}>
               <View style={{marginRight: icon === 'user-plus' ? 6 : 14}}>
                 <Icon name={icon} size={20} color="#eaeaea" solid />

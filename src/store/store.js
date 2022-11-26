@@ -1,11 +1,12 @@
-import create from 'zustand/react';
+import create from 'zustand';
 
-const useStore = create(set => ({
-  accessToken: null,
-  isLoading: true,
-  signIn: newToken => set(state => ({accessToken: newToken, isLoading: false})),
-  signOut: () => set(state => ({accessToken: null, isLoading: false})),
-  signUp: newToken => set(state => ({accessToken: newToken, isLoading: false})),
+const useAuthStore = create(set => ({
+  accessToken: undefined,
+  userInfo: null,
+  signIn: newToken => set(() => ({accessToken: newToken})),
+  signUp: newToken => set(() => ({accessToken: newToken})),
+  signOut: () => set(() => ({accessToken: undefined})),
+  serUserInfo: info => set(() => ({userInfo: info})),
 }));
 
-export default useStore;
+export default useAuthStore;

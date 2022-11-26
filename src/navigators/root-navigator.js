@@ -10,7 +10,6 @@ export const RootNavigation = () => {
   return (
     <NavigationContainer>
       {isToken ? <AppStack /> : <AuthStack />}
-      {/* <AuthStack /> */}
     </NavigationContainer>
   );
 };

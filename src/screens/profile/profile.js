@@ -7,6 +7,7 @@ import List from 'react-native-vector-icons/FontAwesome';
 import Reels from 'react-native-vector-icons/FontAwesome';
 import UserTag from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
+import {SCREEN_NAMES} from '../../constant/screenRoutes';
 
 const Profile = () => {
   const navigation = useNavigation();
@@ -216,7 +217,7 @@ const Profile = () => {
                   key={id}
                   activeOpacity={0.6}
                   onPress={() =>
-                    navigation.navigate('Profile:PostDetail', {
+                    navigation.navigate(SCREEN_NAMES.PROFILE_POST_DETAIL, {
                       id,
                       username,
                       title,

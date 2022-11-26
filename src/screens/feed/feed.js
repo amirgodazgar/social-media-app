@@ -5,6 +5,7 @@ import {getPosts} from '../../services/getPosts';
 import Layout from '../../components/layout/layout';
 import {getPostsMapper} from './mapper/get-post-mapper';
 import Post from './post';
+import {SCREEN_NAMES} from '../../constant/screenRoutes';
 
 const Feed = () => {
   const navigation = useNavigation();
@@ -209,7 +210,7 @@ const Feed = () => {
               key={id}
               activeOpacity={0.6}
               onPress={() =>
-                navigation.navigate('Feed:PostDetail', {
+                navigation.navigate(SCREEN_NAMES.FEED_POST_DETAIL, {
                   id,
                   username,
                   title,

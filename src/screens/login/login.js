@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   StatusBar,
   View,
@@ -25,13 +25,29 @@ const Login = () => {
     },
   });
 
-  const {setUserInfo, isLoading} = useLogin();
+  const {setUserInfo, isLoading, data} = useLogin();
 
   const onSubmit = ({identifier, password}) => {
     setUserInfo(identifier, password);
   };
 
-  console.log('roooot', userInfo, isLoading);
+  // useEffect(() => {
+  //   setItem('accessToken', data?.jwt);
+  //   setItem('userInfo', data?.user);
+  //   console.log('submit', data?.user);
+  // }, [data]);
+
+  // const storage = {
+  //   accessToken: '',
+  //   userInfo: {
+  //     id: 2,
+  //     username: 'reza.heydari',
+  //     email: 'r@gmail.com',
+  //   },
+  // };
+
+  console.log('0000000', data, isLoading);
+
   // const res = {
   //   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY4NTk4ODk0LCJleHAiOjE2NzExOTA4OTR9.XzLnSLkMa3wn5P49BVi574mx2ARLKVUi5-rvVL08fAU',
   //   user: {

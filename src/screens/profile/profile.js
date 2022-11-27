@@ -1,5 +1,11 @@
-import React from 'react';
-import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
+import React, {useCallback, useEffect, useState} from 'react';
+import {
+  ActivityIndicator,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import Text from '../../components/text/text';
 import {styles} from './profileStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
@@ -8,9 +14,21 @@ import Reels from 'react-native-vector-icons/FontAwesome';
 import UserTag from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
 import {SCREEN_NAMES} from '../../constant/screenRoutes';
+import useStorage from '../../hooks/useStorage';
 
 const Profile = () => {
+  const [userData, setUserData] = useState([]);
   const navigation = useNavigation();
+  const {getItem, data} = useStorage();
+
+  const stringifyData = String(data);
+
+  useEffect(() => {
+    getItem('userInfo');
+    setUserData(data);
+  }, [stringifyData]);
+
+  const username = userData && userData?.username;
 
   const info = [
     {num: 91, title: 'Posts'},
@@ -136,7 +154,11 @@ const Profile = () => {
         <View style={styles.menuContainer}>
           <View style={styles.usernameBox}>
             <Icon name="lock" size={15} style={styles.icon} />
-            <Text style={styles.username}>Bobby.Fischer</Text>
+            {username ? (
+              <Text style={styles.username}>{username}</Text>
+            ) : (
+              <ActivityIndicator size="large" color="#EAEAEA" />
+            )}
             <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
               <Icon name="chevron-down" size={15} style={styles.icon} />
             </TouchableOpacity>

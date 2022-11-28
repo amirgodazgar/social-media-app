@@ -6,6 +6,7 @@ import React from 'react';
 import Profile from '../screens/profile/profile';
 import Setting from '../screens/setting/setting';
 import PostDetail from '../screens/post-detail/post-detail';
+import Login from '../screens/login/login';
 
 const Drawer = createDrawerNavigator();
 const ProfileStack = createNativeStackNavigator();
@@ -28,6 +29,11 @@ export const ProfileStackScreen = () => {
         name={SCREEN_NAMES.PROFILE_POST_DETAIL}
         options={headerStyles}
         component={PostDetail}
+      />
+      <ProfileStack.Screen
+        name={SCREEN_NAMES.LOGIN}
+        component={Login}
+        options={{headerShown: false}}
       />
     </ProfileStack.Navigator>
   );

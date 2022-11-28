@@ -9,12 +9,11 @@ export const useLogin = () => {
   const {setItem} = useStorage();
 
   const onSuccess = res => {
+    console.log('onSuccess', res?.jwt);
+    signIn(res?.jwt);
     serUserInfo(res.user);
-    setTimeout(() => {
-      signIn(res?.jwt);
-      setItem('accessToken', res?.jwt);
-      setItem('userInfo', res?.user);
-    }, 2000);
+    setItem('accessToken', res?.jwt);
+    setItem('userInfo', res?.user);
   };
   const onError = err => console.log('Login Error => ', err);
 

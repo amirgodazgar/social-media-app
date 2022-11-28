@@ -8,10 +8,15 @@ const AuthenticationStack = createNativeStackNavigator();
 
 export const AuthStack = () => (
   <AuthenticationStack.Navigator initialRouteName={SCREEN_NAMES.LOGIN}>
-    <AuthenticationStack.Screen name={SCREEN_NAMES.LOGIN} component={Login} />
+    <AuthenticationStack.Screen
+      name={SCREEN_NAMES.LOGIN}
+      component={Login}
+      options={{headerShown: false}}
+    />
     <AuthenticationStack.Screen
       name={SCREEN_NAMES.REGISTER}
       component={Register}
+      options={{headerShown: false}}
     />
   </AuthenticationStack.Navigator>
 );

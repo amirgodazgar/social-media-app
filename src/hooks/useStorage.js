@@ -9,7 +9,8 @@ const useStorage = () => {
     try {
       if (typeof value === 'string') {
         await AsyncStorage.setItem(`@${key}`, value);
-      } else {
+      }
+      if (typeof value === 'object') {
         const jsonValue = JSON.stringify(value);
         await AsyncStorage.setItem(`@${key}`, jsonValue);
       }
@@ -19,27 +20,38 @@ const useStorage = () => {
   };
 
   //   ------------------- GET DATA -------------------------
-  const getItem = async key => {
+  const getItem = async (key, type = 'string') => {
     try {
-      if (typeof value === 'string') {
-        const value = await AsyncStorage.getItem(`@${key}`);
-        if (value !== null) {
+      const value = await AsyncStorage.getItem(`@${key}`);
+
+      if (value !== null) {
+        if (typeof type === 'string') {
           setData(value);
         }
-      } else {
-        const jsonValue = await AsyncStorage.getItem(`@${key}`);
-        const value = jsonValue != null ? JSON.parse(jsonValue) : null;
-        setData(value);
+
+        if (typeof type === 'object') {
+          const jsonValue = JSON.parse(value);
+          setData(jsonValue);
+        }
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  console.log('111111111111', data);
+  //   ------------------- REMOVE DATA -------------------------
+  const removeItem = async key => {
+    try {
+      await AsyncStorage.removeItem(`@${key}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return {
     setItem,
     getItem,
+    removeItem,
     data,
   };
 };

@@ -7,6 +7,7 @@ const useAuthStore = create(set => ({
   signUp: newToken => set(() => ({accessToken: newToken})),
   signOut: () => set(() => ({accessToken: undefined})),
   serUserInfo: info => set(() => ({userInfo: info})),
+  removeUserInfo: () => set(() => ({userInfo: null})),
 }));
 
 export default useAuthStore;

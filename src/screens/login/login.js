@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {
   StatusBar,
   View,
@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
 import {useLogin} from '../../hooks/useLogin';
 import useAuthStore from '../../store/store';
+import useStorage from '../../hooks/useStorage';
 
 const Login = () => {
   const userInfo = useAuthStore(state => state.userInfo);
@@ -25,42 +26,13 @@ const Login = () => {
     },
   });
 
-  const {setUserInfo, isLoading, data} = useLogin();
+  const {getItem} = useStorage();
+  const {setUserInfo, isLoading} = useLogin();
 
   const onSubmit = ({identifier, password}) => {
     setUserInfo(identifier, password);
+    getItem('accessToken');
   };
-
-  // useEffect(() => {
-  //   setItem('accessToken', data?.jwt);
-  //   setItem('userInfo', data?.user);
-  //   console.log('submit', data?.user);
-  // }, [data]);
-
-  // const storage = {
-  //   accessToken: '',
-  //   userInfo: {
-  //     id: 2,
-  //     username: 'reza.heydari',
-  //     email: 'r@gmail.com',
-  //   },
-  // };
-
-  console.log('0000000', data, isLoading);
-
-  // const res = {
-  //   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjY4NTk4ODk0LCJleHAiOjE2NzExOTA4OTR9.XzLnSLkMa3wn5P49BVi574mx2ARLKVUi5-rvVL08fAU',
-  //   user: {
-  //     blocked: false,
-  //     confirmed: true,
-  //     createdAt: '2022-11-10T14:29:48.075Z',
-  //     email: 'r@gmail.com',
-  //     id: 2,
-  //     provider: 'local',
-  //     updatedAt: '2022-11-10T14:29:48.075Z',
-  //     username: 'reza.heydari',
-  //   },
-  // };
 
   return (
     <LinearGradient
@@ -160,12 +132,6 @@ const Login = () => {
             />
           </View>
         </LinearGradient>
-
-        <View>
-          {!isLoading && (
-            <Text style={{color: '#eee'}}>{String(userInfo?.username)}</Text>
-          )}
-        </View>
       </ScrollView>
     </LinearGradient>
   );

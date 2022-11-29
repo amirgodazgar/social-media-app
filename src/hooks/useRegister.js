@@ -1,5 +1,5 @@
 import {useNavigation} from '@react-navigation/native';
-import {useMutation} from 'react-query';
+import {useMutation, useQueryClient} from 'react-query';
 import {SCREEN_NAMES} from '../constant/screenRoutes';
 import {getRegister} from '../services/auth';
 import useAuthStore from '../store/store';
@@ -9,13 +9,14 @@ export const useRegister = () => {
   const signUp = useAuthStore(state => state.signUp);
   const {setItem} = useStorage();
   const navigation = useNavigation();
+  const queryClient = useQueryClient();
 
-  const onSuccess = res => {
-    console.log('onSuccess', res?.jwt);
+  const onSuccess = async res => {
     signUp(res?.jwt);
-    setItem('accessToken', res?.jwt);
-    setItem('userInfo', res?.user);
-    navigation.navigate(SCREEN_NAMES.LOGIN);
+    await setItem('accessToken', res?.jwt);
+    await setItem('userInfo', res?.user);
+    queryClient.invalidateQueries('userInfo');
+    navigation.navigate(SCREEN_NAMES.PROFILE_ROOT);
   };
   const onError = err => console.log('Login Error => ', err);
 

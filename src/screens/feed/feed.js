@@ -14,7 +14,6 @@ const Feed = () => {
     getPosts().then(res => {
       const response = getPostsMapper(res);
       setPosts(response);
-      // console.log('FEED', response);
     });
   }, []);
 

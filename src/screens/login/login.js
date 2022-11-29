@@ -7,6 +7,7 @@ import {
   Button,
   ScrollView,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import Text from '../../components/text/text';
@@ -15,8 +16,11 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
 import {useLogin} from '../../hooks/useLogin';
 import useAuthStore from '../../store/store';
+import {useNavigation} from '@react-navigation/native';
+import {SCREEN_NAMES} from '../../constant/screenRoutes';
 
 const Login = () => {
+  const navigation = useNavigation();
   const userInfo = useAuthStore(state => state.userInfo);
   const {control, handleSubmit} = useForm({
     defaultValues: {
@@ -122,6 +126,15 @@ const Login = () => {
                 )}
               />
             </View>
+
+            <View style={styles.avatarContainer}>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => navigation.navigate(SCREEN_NAMES.REGISTER)}>
+                <Text style={styles.link}>I don't have an account</Text>
+              </TouchableOpacity>
+            </View>
+
             <Button
               onPress={handleSubmit(onSubmit)}
               title="Login"

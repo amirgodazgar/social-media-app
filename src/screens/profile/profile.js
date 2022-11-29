@@ -21,6 +21,8 @@ const Profile = () => {
   const {data, isLoading} = useUserInfo();
   const {userInfo} = data || {};
 
+  console.log('userInfo', userInfo);
+
   const info = [
     {num: 91, title: 'Posts'},
     {num: 485, title: 'Followers'},

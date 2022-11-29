@@ -7,6 +7,7 @@ import Profile from '../screens/profile/profile';
 import Setting from '../screens/setting/setting';
 import PostDetail from '../screens/post-detail/post-detail';
 import Login from '../screens/login/login';
+import Register from '../screens/register/register';
 
 const Drawer = createDrawerNavigator();
 const ProfileStack = createNativeStackNavigator();
@@ -33,6 +34,11 @@ export const ProfileStackScreen = () => {
       <ProfileStack.Screen
         name={SCREEN_NAMES.LOGIN}
         component={Login}
+        options={{headerShown: false}}
+      />
+      <ProfileStack.Screen
+        name={SCREEN_NAMES.REGISTER}
+        component={Register}
         options={{headerShown: false}}
       />
     </ProfileStack.Navigator>

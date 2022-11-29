@@ -61,4 +61,8 @@ export const styles = ScaledSheet.create({
     padding: '8@s',
     color: '#EAEAEA',
   },
+  link: {
+    color: '#eaeaea',
+    fontSize: '14@sr',
+  },
 });

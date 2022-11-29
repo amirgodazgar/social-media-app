@@ -33,7 +33,7 @@ export const styles = ScaledSheet.create({
     marginBottom: '5@s',
   },
   box: {
-    height: '500@sr',
+    height: '550@sr',
     flexDirection: 'column',
     justifyContent: 'space-around',
     paddingVertical: '15@s',
@@ -60,5 +60,10 @@ export const styles = ScaledSheet.create({
     borderRadius: 5,
     padding: '8@s',
     color: '#EAEAEA',
+  },
+
+  link: {
+    color: '#eaeaea',
+    fontSize: '14@sr',
   },
 });

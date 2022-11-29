@@ -7,16 +7,19 @@ import {
   TextInput,
   Button,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import Text from '../../components/text/text';
 import {styles} from './registerStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
 import {useRegister} from '../../hooks/useRegister';
+import {useNavigation} from '@react-navigation/native';
+import {SCREEN_NAMES} from '../../constant/screenRoutes';
 
 const Register = () => {
+  const navigation = useNavigation();
   const {setUserInfo, isLoading, data} = useRegister();
-
   const {control, handleSubmit} = useForm({
     defaultValues: {
       email: '',
@@ -150,6 +153,13 @@ const Register = () => {
                   />
                 )}
               />
+            </View>
+            <View style={styles.avatarContainer}>
+              <TouchableOpacity
+                activeOpacity={0.5}
+                onPress={() => navigation.navigate(SCREEN_NAMES.LOGIN)}>
+                <Text style={styles.link}>I have an account</Text>
+              </TouchableOpacity>
             </View>
 
             <Button

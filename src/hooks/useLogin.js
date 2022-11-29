@@ -6,13 +6,12 @@ import useStorage from './useStorage';
 export const useLogin = () => {
   const signIn = useAuthStore(state => state.signIn);
   const setUserInformation = useAuthStore(state => state.setUserInfo);
-  const {setItem, data: token} = useStorage();
+  const {setItem} = useStorage();
   const queryClient = useQueryClient();
 
   const onSuccess = async res => {
     signIn(res?.jwt);
     setUserInformation(res.user);
-
     await setItem('accessToken', res?.jwt);
     await setItem('userInfo', res?.user);
     queryClient.invalidateQueries('userInfo');

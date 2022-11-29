@@ -19,7 +19,7 @@ const useStorage = () => {
     }
   };
 
-  //   ------------------- GET DATA -------------------------
+  //   ------------------- GET DATA ------------------------
   const getItem = async (key, type = 'string') => {
     try {
       const value = await AsyncStorage.getItem(`@${key}`);
@@ -39,10 +39,19 @@ const useStorage = () => {
     }
   };
 
-  //   ------------------- REMOVE DATA -------------------------
+  //   ------------------- REMOVE DATA ----------------------
   const removeItem = async key => {
     try {
       await AsyncStorage.removeItem(`@${key}`);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  //   ------------------- CLEAR DATA ----------------------
+  const clear = async () => {
+    try {
+      await AsyncStorage.clear();
     } catch (error) {
       console.log(error);
     }
@@ -52,6 +61,7 @@ const useStorage = () => {
     setItem,
     getItem,
     removeItem,
+    clear,
     data,
   };
 };

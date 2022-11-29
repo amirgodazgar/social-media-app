@@ -15,7 +15,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {Controller, useForm} from 'react-hook-form';
 import {useLogin} from '../../hooks/useLogin';
 import useAuthStore from '../../store/store';
-import useStorage from '../../hooks/useStorage';
 
 const Login = () => {
   const userInfo = useAuthStore(state => state.userInfo);
@@ -26,12 +25,10 @@ const Login = () => {
     },
   });
 
-  const {getItem} = useStorage();
   const {setUserInfo, isLoading} = useLogin();
 
   const onSubmit = ({identifier, password}) => {
     setUserInfo(identifier, password);
-    getItem('accessToken');
   };
 
   return (

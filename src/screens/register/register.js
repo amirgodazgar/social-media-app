@@ -11,13 +11,11 @@ import {
 import Text from '../../components/text/text';
 import {styles} from './registerStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useMutation} from 'react-query';
-import {getRegister} from '../../services/auth';
 import {Controller, useForm} from 'react-hook-form';
-import useAuthStore from '../../store/store';
+import {useRegister} from '../../hooks/useRegister';
 
 const Register = () => {
-  const signUp = useAuthStore(state => state.signUp);
+  const {setUserInfo, isLoading, data} = useRegister();
 
   const {control, handleSubmit} = useForm({
     defaultValues: {
@@ -27,17 +25,10 @@ const Register = () => {
     },
   });
 
-  const {mutate, isLoading, data, error, isError} = useMutation(getRegister);
-
   const onSubmit = ({email, username, password}) => {
-    mutate(
-      {email, username, password},
-      {
-        onSuccess: res => signUp(res?.jwt),
-      },
-    );
+    setUserInfo(email, username, password);
   };
-  console.log(data);
+
   // const res = {
   //   jwt: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NDMsImlhdCI6MTY2ODU4NDQ3NiwiZXhwIjoxNjcxMTc2NDc2fQ.v_grLxnxWZ81PQMC1T9kK692M2Nxme85OLseaVSfwjs',
   //   user: {

@@ -14,20 +14,12 @@ import Reels from 'react-native-vector-icons/FontAwesome';
 import UserTag from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
 import {SCREEN_NAMES} from '../../constant/screenRoutes';
-import useStorage from '../../hooks/useStorage';
+import useUserInfo from '../../hooks/useUserInfo';
 
 const Profile = () => {
   const navigation = useNavigation();
-  const {getItem, data: userData} = useStorage();
-
-  const stringifyData = String(userData);
-
-  useEffect(() => {
-    getItem('userInfo', 'object');
-  }, [stringifyData, getItem]);
-
-  console.log('ddddddddd', typeof JSON.parse(userData));
-  console.log('ddddddddd', typeof userData);
+  const {data, isLoading} = useUserInfo();
+  const {userInfo} = data || {};
 
   const info = [
     {num: 91, title: 'Posts'},
@@ -150,16 +142,14 @@ const Profile = () => {
   return (
     <ScrollView>
       <View style={styles.mainContainer}>
-        {!userData ? (
+        {isLoading ? (
           <ActivityIndicator size={'large'} color="#eaeaea" />
         ) : (
           <>
             <View style={styles.menuContainer}>
               <View style={styles.usernameBox}>
                 <Icon name="lock" size={15} style={styles.icon} />
-                <Text style={styles.username}>
-                  {JSON.parse(userData).username}
-                </Text>
+                <Text style={styles.username}>{userInfo.username}</Text>
                 <TouchableOpacity activeOpacity={0.6} onPress={() => {}}>
                   <Icon name="chevron-down" size={15} style={styles.icon} />
                 </TouchableOpacity>
@@ -180,9 +170,7 @@ const Profile = () => {
                 ))}
               </View>
               <View style={styles.bioBox}>
-                <Text style={styles.bioName}>
-                  {JSON.parse(userData).username}
-                </Text>
+                <Text style={styles.bioName}>{userInfo.username}</Text>
                 {bio.map(i => (
                   <Text key={i} style={styles.bioText}>
                     {i}

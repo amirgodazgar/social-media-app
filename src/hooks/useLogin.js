@@ -1,19 +1,21 @@
-import {useMutation} from 'react-query';
+import {useMutation, useQueryClient} from 'react-query';
 import {login} from '../services/auth';
 import useAuthStore from '../store/store';
 import useStorage from './useStorage';
 
 export const useLogin = () => {
   const signIn = useAuthStore(state => state.signIn);
-  const serUserInfo = useAuthStore(state => state.serUserInfo);
-  const {setItem} = useStorage();
+  const setUserInformation = useAuthStore(state => state.setUserInfo);
+  const {setItem, data: token} = useStorage();
+  const queryClient = useQueryClient();
 
-  const onSuccess = res => {
-    console.log('onSuccess', res?.jwt);
+  const onSuccess = async res => {
     signIn(res?.jwt);
-    serUserInfo(res.user);
-    setItem('accessToken', res?.jwt);
-    setItem('userInfo', res?.user);
+    setUserInformation(res.user);
+
+    await setItem('accessToken', res?.jwt);
+    await setItem('userInfo', res?.user);
+    queryClient.invalidateQueries('userInfo');
   };
   const onError = err => console.log('Login Error => ', err);
 

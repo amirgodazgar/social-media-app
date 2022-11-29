@@ -1,24 +1,30 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {AppStack} from './app-navigator';
 import {AuthStack} from './auth-navigator';
-import useStorage from '../hooks/useStorage';
 import useAuthStore from '../store/store';
-import {Text, View} from 'react-native';
+import useUserInfo from '../hooks/useUserInfo';
+import {ActivityIndicator} from 'react-native';
 
 export const RootNavigation = () => {
-  const accessToken = useAuthStore(state => state.accessToken);
-  const {getItem, data: Token} = useStorage();
+  const {data, isLoading} = useUserInfo();
+  const {accessToken, userInfo} = data || {};
+
+  const setUserInfo = useAuthStore(state => state.setUserInfo);
+  const signIn = useAuthStore(state => state.signIn);
+  // queryClient
+
 
   useEffect(() => {
-    getItem('accessToken');
-  }, [accessToken, getItem]);
+    signIn(accessToken);
+    setUserInfo(userInfo || undefined);
+  }, [accessToken, userInfo]);
 
-  console.log('Navigation-Token', Token);
+  if (isLoading) return <ActivityIndicator />;
 
   return (
     <NavigationContainer>
-      {Token ? <AppStack /> : <AuthStack />}
+      {accessToken ? <AppStack /> : <AuthStack />}
     </NavigationContainer>
   );
 };

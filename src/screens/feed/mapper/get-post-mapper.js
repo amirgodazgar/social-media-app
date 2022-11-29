@@ -14,14 +14,18 @@ export const nameCreator = id => {
   else return selectedName;
 };
 
+// https://powerful-dusk-84737.herokuapp.com/uploads/cat_65ce6855a3.jpg
+
 export const getPostsMapper = data => {
-  const mappedResponse = data.data.map(item => ({
+  const mappedResponse = data.map(item => ({
     id: item.id,
-    username: nameCreator(item.id),
+    username: item.user ? item.user.data.attributes.username : 'username',
     title: item.attributes.title,
     caption: item.attributes.caption,
     publishAt: convertDate(item.attributes.publishedAt),
     image: item.attributes.images,
+    imageSrc: require('../../../assets/post4.jpeg'),
+    avatarSrc: require('../../../assets/man4.jpeg'),
     // .map(img => ({
     //   id: img.id,
     //   name: img.attributes.name,

@@ -3,11 +3,10 @@ import {Image, TextInput, TouchableOpacity, View} from 'react-native';
 import Text from '../../components/text/text';
 import {styles} from './new-post-styles';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import {useMutation} from 'react-query';
-import {createNewPost} from '../../services/create-new-post';
 import {Controller, useForm} from 'react-hook-form';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import useCreatePost from '../../hooks/useCreatePost';
+import Indicator from '../../components/indicator/indicator';
 
 const NewPost = () => {
   const [uploadData, setUploadData] = useState(null);
@@ -48,24 +47,18 @@ const NewPost = () => {
     setCreateNewPost(formData);
   };
 
-  // var formdata = new FormData();
-  // formdata.append(
-  //   'data',
-  //   `"title":"image test",
-  //   "caption":"test tsetdad"`,
-  // );
-  // formdata.append('files.images', fileInput.files[0], 'cat.jpg');
-  // formdata.append(
-  //   'files.images',
-  //   fileInput.files[0],
-  //   'wp5054503-amoled-computer-wallpapers.jpg',
-  // );
+  if (isLoading) return <Indicator />;
+  console.log('onSubmit', isLoading, data);
 
   return (
     <View style={styles.mainContainer}>
       <View style={styles.headerBox}>
         <View style={styles.goBack}>
           <Text style={styles.backText}>Send Post</Text>
+
+          {data ? (
+            <Text style={{color: '#9CFF2E'}}>Post has been sent</Text>
+          ) : null}
         </View>
         <TouchableOpacity
           onPress={handleSubmit(onSubmit)}

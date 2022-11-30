@@ -3,7 +3,6 @@ import {createNewPost} from '../services/create-new-post';
 
 const useCreatePost = () => {
   const onSuccess = async res => {
-    console.log('response', res);
     return res;
   };
   const onError = err => console.log('Login Error => ', err);
@@ -11,7 +10,7 @@ const useCreatePost = () => {
     mutate(formData);
   };
 
-  const {mutate, isLoading} = useMutation(createNewPost, {
+  const {mutate, isLoading, data} = useMutation(createNewPost, {
     onSuccess,
     onError,
   });

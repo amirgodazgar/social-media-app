@@ -19,7 +19,6 @@ httpsPrivate.interceptors.request.use(
   async config => {
     if (!config.headers['Authorization']) {
       const token = await getToken();
-      console.log('token', token);
       config.headers['Authorization'] = `Bearer ${token}`;
     }
     return config;

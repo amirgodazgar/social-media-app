@@ -20,8 +20,6 @@ const Feed = () => {
     });
   }, []);
 
-  console.log('posts', postsData);
-
   // const response = {
   //   id: 1,
   //   attributes: {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Image, TextInput, TouchableOpacity, View} from 'react-native';
 import Text from '../../components/text/text';
 import {styles} from './new-post-styles';
@@ -6,8 +6,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import {useMutation} from 'react-query';
 import {createNewPost} from '../../services/create-new-post';
 import {Controller, useForm} from 'react-hook-form';
+import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 
 const NewPost = () => {
+  const [uploadData, setUploadData] = useState(null);
   const {control, handleSubmit} = useForm({
     defaultValues: {
       title: '',
@@ -20,18 +22,40 @@ const NewPost = () => {
     'create-new-post',
     createNewPost,
     {
-      onSuccess: res => console.log(res),
+      onSuccess: res => console.log('response', res),
+      onError: res => console.log('error', res),
     },
   );
 
-  const onSubmit = ({title, caption, imageFiles}) => {
+  const uploadImage = () => {
+    console.log(launchImageLibrary);
+    launchImageLibrary({}, res => {
+      const assets = res.assets[0];
+      console.log('launch', assets);
+      setUploadData({
+        name: assets.fileName,
+        type: assets.type,
+        uri: assets.uri,
+      });
+    });
+  };
+
+  const onSubmit = ({title, caption}) => {
+    const {name, type, uri} = uploadData;
+
+    console.log('submit', uploadData);
+
+    const data = {
+      title,
+      caption,
+    };
     const formData = new FormData();
-    formData.append(
-      'data',
-      `"title":${title},
-    "caption":${caption}`,
-    );
-    FormData.append('files.images', imageFiles.files[0]);
+    formData.append('data', JSON.stringify(data));
+    formData.append('files.images', {
+      name,
+      type,
+      uri,
+    });
 
     mutate(formData);
   };
@@ -49,15 +73,16 @@ const NewPost = () => {
   //   'wp5054503-amoled-computer-wallpapers.jpg',
   // );
 
-  console.log(data);
-
   return (
     <View style={styles.mainContainer}>
       <View style={styles.headerBox}>
         <View style={styles.goBack}>
           <Text style={styles.backText}>Send Post</Text>
         </View>
-        <TouchableOpacity activeOpacity={0.5} style={styles.sendBtn}>
+        <TouchableOpacity
+          onPress={handleSubmit(onSubmit)}
+          activeOpacity={0.5}
+          style={styles.sendBtn}>
           <Text style={styles.sendText}>Send</Text>
         </TouchableOpacity>
       </View>
@@ -74,7 +99,7 @@ const NewPost = () => {
         </View>
         <View style={styles.uploaderBox}>
           <Text style={styles.uploadText}>Add photo</Text>
-          <TouchableOpacity activeOpacity={0.5}>
+          <TouchableOpacity activeOpacity={0.5} onPress={uploadImage}>
             <Icon name="plus-circle" size={20} color="#eaeaea" />
           </TouchableOpacity>
         </View>

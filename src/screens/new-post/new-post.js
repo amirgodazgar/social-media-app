@@ -7,6 +7,7 @@ import {useMutation} from 'react-query';
 import {createNewPost} from '../../services/create-new-post';
 import {Controller, useForm} from 'react-hook-form';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
+import useCreatePost from '../../hooks/useCreatePost';
 
 const NewPost = () => {
   const [uploadData, setUploadData] = useState(null);
@@ -14,24 +15,14 @@ const NewPost = () => {
     defaultValues: {
       title: '',
       caption: '',
-      imageFiles: '',
     },
   });
 
-  const {mutate, data, isLoading} = useMutation(
-    'create-new-post',
-    createNewPost,
-    {
-      onSuccess: res => console.log('response', res),
-      onError: res => console.log('error', res),
-    },
-  );
+  const {setCreateNewPost, isLoading, data} = useCreatePost();
 
   const uploadImage = () => {
-    console.log(launchImageLibrary);
     launchImageLibrary({}, res => {
       const assets = res.assets[0];
-      console.log('launch', assets);
       setUploadData({
         name: assets.fileName,
         type: assets.type,
@@ -42,22 +33,19 @@ const NewPost = () => {
 
   const onSubmit = ({title, caption}) => {
     const {name, type, uri} = uploadData;
-
-    console.log('submit', uploadData);
-
-    const data = {
+    const data = JSON.stringify({
       title,
       caption,
-    };
+    });
     const formData = new FormData();
-    formData.append('data', JSON.stringify(data));
+    formData.append('data', data);
     formData.append('files.images', {
       name,
       type,
       uri,
     });
 
-    mutate(formData);
+    setCreateNewPost(formData);
   };
 
   // var formdata = new FormData();

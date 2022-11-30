@@ -48,7 +48,6 @@ const NewPost = () => {
   };
 
   if (isLoading) return <Indicator />;
-  console.log('onSubmit', isLoading, data);
 
   return (
     <View style={styles.mainContainer}>

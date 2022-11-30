@@ -29,12 +29,12 @@ const Post = ({username, caption, date, isFollow, avatarSrc, postSrc}) => {
       </View>
       <View style={styles.caption}>
         <View>
-          <Text style={styles.summary}>{caption.substring(0, 40)}...</Text>
+          <Text style={styles.summary}>{caption.substring(0, 20)}...</Text>
         </View>
       </View>
       <View style={styles.photoContainer}>
         <View style={styles.postImage}>
-          <Image style={styles.postImage} source={postSrc} />
+          <Image style={styles.postImage} source={{uri: postSrc}} />
         </View>
       </View>
       <Actions />

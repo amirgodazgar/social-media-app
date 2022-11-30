@@ -75,7 +75,7 @@ export const styles = ScaledSheet.create({
     color: '#B2B2B2',
   },
   photoContainer: {
-    flex: 0.57,
+    flex: 0.37,
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',

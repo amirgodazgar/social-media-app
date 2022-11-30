@@ -59,7 +59,7 @@ const PostDetail = () => {
       </View>
       <View style={styles.photoContainer}>
         <View style={styles.postImage}>
-          <Image style={styles.postImage} source={postSrc} />
+          <Image style={styles.postImage} source={{uri: postSrc}} />
         </View>
       </View>
       <Actions />

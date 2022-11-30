@@ -17,21 +17,20 @@ export const nameCreator = id => {
 // https://powerful-dusk-84737.herokuapp.com/uploads/cat_65ce6855a3.jpg
 
 export const getPostsMapper = data => {
-  const mappedResponse = data.map(item => ({
-    id: item.id,
-    username: item.user ? item.user.data.attributes.username : 'username',
-    title: item.attributes.title,
-    caption: item.attributes.caption,
-    publishAt: convertDate(item.attributes.publishedAt),
-    image: item.attributes.images,
-    imageSrc: require('../../../assets/post4.jpeg'),
-    avatarSrc: require('../../../assets/man4.jpeg'),
-    // .map(img => ({
-    //   id: img.id,
-    //   name: img.attributes.name,
-    //   src: img.attributes.url,
-    // })),
-  }));
+  const baseUrl = 'https://powerful-dusk-84737.herokuapp.com';
+  const mappedResponse = data.slice(0, 3).map(item => {
+    console.log(item.attributes.images.data[0].attributes.url);
+    return {
+      id: item.id,
+      username: item.attributes.user.data.attributes.username,
+      title: item.attributes.title,
+      caption: item.attributes.caption,
+      publishAt: convertDate(item.attributes.publishedAt),
+      imageSrc: `${baseUrl}${item.attributes.images.data[0].attributes.url}`,
+      avatarSrc: require('../../../assets/man4.jpeg'),
+      // imageSrc: require('../../../assets/post4.jpeg'),
+    };
+  });
 
   return mappedResponse;
 };

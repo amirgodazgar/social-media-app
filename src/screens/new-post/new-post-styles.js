@@ -10,23 +10,28 @@ export const styles = ScaledSheet.create({
     padding: '8@s',
   },
   headerBox: {
-    flex: 0.05,
+    height: '50@sr',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  goBack: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+  sendBtn: {
+    padding: '4@sr',
+    backgroundColor: '#fe3d6d',
+    borderRadius: '4@sr',
+    width: '50@sr',
+  },
+  sendText: {
+    textAlign: 'center',
+    fontSize: '14@sr',
+    color: '#eaeaea',
   },
   backText: {
     fontSize: '16@sr',
     color: '#eaeaea',
-    marginLeft: '10@sr',
   },
   uploadContainer: {
-    flex: 0.3,
+    height: '200@sr',
     justifyContent: 'space-around',
     borderBottomWidth: 1,
     borderColor: '#eaeaea2f',
@@ -53,7 +58,7 @@ export const styles = ScaledSheet.create({
     color: '#eaeaea',
     fontSize: '15@sr',
   },
-  captionContainer: {flex: 0.1},
+  captionContainer: {height: '120@sr'},
   textArea: {
     fontSize: '14@sr',
     color: '#eaeaea',
@@ -61,7 +66,7 @@ export const styles = ScaledSheet.create({
     borderColor: '#eaeaea2f',
   },
   tagsContainer: {
-    flex: 0.5,
+    height: '120@sr',
     justifyContent: 'flex-start',
     alignContent: 'center',
   },

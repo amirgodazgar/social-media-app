@@ -18,19 +18,22 @@ export const nameCreator = id => {
 
 export const getPostsMapper = data => {
   const baseUrl = 'https://powerful-dusk-84737.herokuapp.com';
-  const mappedResponse = data.slice(0, 3).map(item => {
-    console.log(item.attributes.images.data[0].attributes.url);
-    return {
+  const mappedResponse = data.slice(0, 4).map(item => {
+    const imageSrc = item.attributes.images
+      ? `${baseUrl}${item.attributes.images.data[0].attributes.url}`
+      : require('../../../assets/post4.jpeg');
+
+    const data = {
       id: item.id,
       username: item.attributes.user.data.attributes.username,
       title: item.attributes.title,
       caption: item.attributes.caption,
       publishAt: convertDate(item.attributes.publishedAt),
-      imageSrc: `${baseUrl}${item.attributes.images.data[0].attributes.url}`,
+      imageSrc,
       avatarSrc: require('../../../assets/man4.jpeg'),
       // imageSrc: require('../../../assets/post4.jpeg'),
     };
+    return data;
   });
-
   return mappedResponse;
 };

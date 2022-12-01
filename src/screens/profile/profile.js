@@ -15,6 +15,7 @@ import UserTag from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
 import {SCREEN_NAMES} from '../../constant/screenRoutes';
 import useUserInfo from '../../hooks/useUserInfo';
+import Indicator from '../../components/indicator/indicator';
 
 const Profile = () => {
   const navigation = useNavigation();

@@ -22,6 +22,13 @@ const PostDetail = () => {
     imageSrc: postSrc,
   } = route.params;
 
+  console.log(typeof postSrc);
+
+  const imageSrcType = () => {
+    if ('number') return postSrc;
+    if ('string') return {uri: postSrc};
+  };
+
   useFocusEffect(() => {
     navigation.setOptions({title});
   });
@@ -54,12 +61,12 @@ const PostDetail = () => {
           <Text style={styles.title}>{title}</Text>
         </View>
         <View>
-          <Text style={styles.summary}>{caption}...</Text>
+          <Text style={styles.summary}>{caption}</Text>
         </View>
       </View>
       <View style={styles.photoContainer}>
         <View style={styles.postImage}>
-          <Image style={styles.postImage} source={{uri: postSrc}} />
+          <Image style={styles.postImage} source={imageSrcType()} />
         </View>
       </View>
       <Actions />

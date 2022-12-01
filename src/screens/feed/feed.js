@@ -56,35 +56,6 @@ const Feed = () => {
         renderItem={renderItem}
         keyExtractor={item => item.id}
       />
-
-      {/* {postsData.map(
-          ({id, username, title, caption, publishAt, avatarSrc, imageSrc}) => (
-            <TouchableOpacity
-              key={id}
-              activeOpacity={0.6}
-              onPress={() =>
-                navigation.navigate(SCREEN_NAMES.FEED_POST_DETAIL, {
-                  id,
-                  username,
-                  title,
-                  caption,
-                  publishAt,
-                  avatarSrc,
-                  imageSrc,
-                })
-              }>
-              <Post
-                username={username}
-                title={title}
-                date={publishAt}
-                caption={caption}
-                isFollow={true}
-                avatarSrc={avatarSrc}
-                postSrc={imageSrc}
-              />
-            </TouchableOpacity>
-          ),
-        )} */}
     </Layout>
   );
 };

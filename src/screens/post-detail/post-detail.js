@@ -22,9 +22,9 @@ const PostDetail = () => {
     imageSrc: postSrc,
   } = route.params;
 
-  const imageSrcType = () => {
-    if ('number') return postSrc;
-    if ('string') return {uri: postSrc};
+  const imageSrcType = source => {
+    if (typeof source === 'string') return {uri: postSrc};
+    if (typeof source === 'number') return postSrc;
   };
 
   useFocusEffect(() => {
@@ -64,7 +64,7 @@ const PostDetail = () => {
       </View>
       <View style={styles.photoContainer}>
         <View style={styles.postImage}>
-          <Image style={styles.postImage} source={imageSrcType()} />
+          <Image style={styles.postImage} source={imageSrcType(postSrc)} />
         </View>
       </View>
       <Actions />

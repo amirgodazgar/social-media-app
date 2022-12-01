@@ -9,9 +9,8 @@ export const createNewPost = async formData => {
 
   try {
     const response = await httpsPrivate.post('/posts', formData, config);
-    console.log('service', response.data.data);
     return response.data.data;
   } catch (error) {
-    console.log(error);
+    console.log('error', error);
   }
 };

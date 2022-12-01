@@ -15,7 +15,7 @@ const useStorage = () => {
         await AsyncStorage.setItem(`@${key}`, jsonValue);
       }
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
   };
 
@@ -35,7 +35,7 @@ const useStorage = () => {
         }
       }
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
   };
 
@@ -44,7 +44,7 @@ const useStorage = () => {
     try {
       await AsyncStorage.removeItem(`@${key}`);
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
   };
 
@@ -53,7 +53,7 @@ const useStorage = () => {
     try {
       await AsyncStorage.clear();
     } catch (error) {
-      console.log(error);
+      console.log('error', error);
     }
   };
 

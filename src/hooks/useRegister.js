@@ -18,7 +18,7 @@ export const useRegister = () => {
     queryClient.invalidateQueries('userInfo');
     navigation.navigate(SCREEN_NAMES.PROFILE_ROOT);
   };
-  const onError = err => console.log('Login Error => ', err);
+  const onError = err => console.log('Register Error => ', err);
 
   const {mutate, isLoading, data} = useMutation(getRegister, {
     onSuccess,

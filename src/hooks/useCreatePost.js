@@ -5,7 +5,7 @@ const useCreatePost = () => {
   const onSuccess = async res => {
     return res;
   };
-  const onError = err => console.log('Login Error => ', err);
+  const onError = err => console.log('error => ', err);
   const setCreateNewPost = formData => {
     mutate(formData);
   };

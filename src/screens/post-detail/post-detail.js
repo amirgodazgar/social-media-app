@@ -22,7 +22,6 @@ const PostDetail = () => {
     imageSrc: postSrc,
   } = route.params;
 
-
   const imageSrcType = () => {
     if ('number') return postSrc;
     if ('string') return {uri: postSrc};

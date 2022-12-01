@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useEffect, useState} from 'react';
-import {ScrollView, TouchableOpacity} from 'react-native';
+import {FlatList, ScrollView, TouchableOpacity} from 'react-native';
 import {getPosts} from '../../services/getPosts';
 import Layout from '../../components/layout/layout';
 import Post from './post';
@@ -23,10 +23,41 @@ const Feed = () => {
 
   if (isLoading) return <Indicator />;
 
+  const renderItem = ({item}) => (
+    <TouchableOpacity
+      activeOpacity={0.6}
+      onPress={() =>
+        navigation.navigate(SCREEN_NAMES.FEED_POST_DETAIL, {
+          id: item.id,
+          username: item.username,
+          title: item.title,
+          caption: item.caption,
+          publishAt: item.publishAt,
+          avatarSrc: item.avatarSrc,
+          imageSrc: item.imageSrc,
+        })
+      }>
+      <Post
+        username={item.username}
+        title={item.title}
+        date={item.publishAt}
+        caption={item.caption}
+        isFollow={true}
+        avatarSrc={item.avatarSrc}
+        postSrc={item.imageSrc}
+      />
+    </TouchableOpacity>
+  );
+
   return (
     <Layout storyMode>
-      <ScrollView>
-        {postsData.map(
+      <FlatList
+        data={postsData}
+        renderItem={renderItem}
+        keyExtractor={item => item.id}
+      />
+
+      {/* {postsData.map(
           ({id, username, title, caption, publishAt, avatarSrc, imageSrc}) => (
             <TouchableOpacity
               key={id}
@@ -53,8 +84,7 @@ const Feed = () => {
               />
             </TouchableOpacity>
           ),
-        )}
-      </ScrollView>
+        )} */}
     </Layout>
   );
 };

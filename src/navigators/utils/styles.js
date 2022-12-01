@@ -17,6 +17,7 @@ export const BottomTabStyles = {
     backgroundColor: '#181818',
   },
   headerTintColor: '#eaeaea',
+  tabBarShowLabel: false,
 };
 
 export const drawerStyles = {

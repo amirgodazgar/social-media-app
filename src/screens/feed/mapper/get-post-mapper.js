@@ -14,31 +14,24 @@ export const nameCreator = id => {
   else return selectedName;
 };
 
-// https://powerful-dusk-84737.herokuapp.com/uploads/cat_65ce6855a3.jpg
-
 export const getPostsMapper = data => {
   const baseUrl = 'http://192.168.1.99:1337';
-
-  console.log('00000000000000', data[0].attributes.images.data);
 
   const mappedResponse = data.map(item => {
     const imageSrc = item.attributes.images.data
       ? `${baseUrl}${item.attributes.images.data[0].attributes.url}`
       : require('../../../assets/post4.jpeg');
 
-    console.log(imageSrc);
-
-    const data = {
+    const updatedData = {
       id: item.id,
       username: item.attributes.user.data.attributes.username,
       title: item.attributes.title,
       caption: item.attributes.caption,
       publishAt: convertDate(item.attributes.publishedAt),
       imageSrc,
-      avatarSrc: require('../../../assets/man4.jpeg'),
-      // imageSrc: require('../../../assets/post4.jpeg'),
+      avatarSrc: require('../../../assets/man2.jpg'),
     };
-    return data;
+    return updatedData;
   });
   return mappedResponse;
 };

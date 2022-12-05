@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
-import React, {useEffect, useState} from 'react';
-import {FlatList, ScrollView, TouchableOpacity} from 'react-native';
+import React from 'react';
+import {FlatList, TouchableOpacity} from 'react-native';
 import {getPosts} from '../../services/getPosts';
 import Layout from '../../components/layout/layout';
 import Post from './post';
@@ -8,13 +8,9 @@ import {SCREEN_NAMES} from '../../constant/screenRoutes';
 import {useQuery} from 'react-query';
 import Indicator from '../../components/indicator/indicator';
 
-// https://powerful-dusk-84737.herokuapp.com/api/posts?pagination[page]=4&pagination[pageSize]=10
-
 const Feed = () => {
   const navigation = useNavigation();
   const {data: postsData, isLoading} = useQuery('getPosts', getPosts);
-
-  console.log(postsData);
 
   if (isLoading) return <Indicator />;
 

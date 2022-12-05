@@ -1,7 +1,6 @@
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// const BASE_URL = 'https://powerful-dusk-84737.herokuapp.com/api';
 const BASE_URL = 'http://192.168.1.99:1337/api';
 
 export const https = axios.create({

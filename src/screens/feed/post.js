@@ -7,6 +7,11 @@ import Actions from './actions';
 const Post = ({username, caption, date, isFollow, avatarSrc, postSrc}) => {
   const followed = isFollow ? {backgroundColor: '#303030'} : null;
 
+  const imageSrcType = source => {
+    if (typeof source === 'string') return {uri: source};
+    if (typeof source === 'number') return source;
+  };
+
   return (
     <View style={styles.postBox}>
       <View style={styles.userInfo}>
@@ -34,7 +39,7 @@ const Post = ({username, caption, date, isFollow, avatarSrc, postSrc}) => {
       </View>
       <View style={styles.photoContainer}>
         <View style={styles.postImage}>
-          <Image style={styles.postImage} source={{uri: postSrc}} />
+          <Image style={styles.postImage} source={imageSrcType(postSrc)} />
         </View>
       </View>
       <Actions />

@@ -17,11 +17,16 @@ export const nameCreator = id => {
 // https://powerful-dusk-84737.herokuapp.com/uploads/cat_65ce6855a3.jpg
 
 export const getPostsMapper = data => {
-  const baseUrl = 'https://powerful-dusk-84737.herokuapp.com';
-  const mappedResponse = data.slice(0, 4).map(item => {
-    const imageSrc = item.attributes.images
+  const baseUrl = 'http://192.168.1.99:1337';
+
+  console.log('00000000000000', data[0].attributes.images.data);
+
+  const mappedResponse = data.map(item => {
+    const imageSrc = item.attributes.images.data
       ? `${baseUrl}${item.attributes.images.data[0].attributes.url}`
       : require('../../../assets/post4.jpeg');
+
+    console.log(imageSrc);
 
     const data = {
       id: item.id,

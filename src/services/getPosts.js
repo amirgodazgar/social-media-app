@@ -6,10 +6,9 @@ export const getPosts = async () => {
     const response = await httpsPrivate.get(
       '/posts?populate[0]=images&populate[1]=user&sort[0]=createdAt:desc',
     );
-
     const mappedResponse = getPostsMapper(response.data.data);
     return mappedResponse;
   } catch (error) {
-    console.log('error', error);
+    console.log('getPosts Error', error);
   }
 };

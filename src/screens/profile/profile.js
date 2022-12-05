@@ -1,11 +1,5 @@
-import React, {useEffect} from 'react';
-import {
-  ActivityIndicator,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  View,
-} from 'react-native';
+import React from 'react';
+import {Image, ScrollView, TouchableOpacity, View} from 'react-native';
 import Text from '../../components/text/text';
 import {styles} from './profileStyles';
 import Icon from 'react-native-vector-icons/FontAwesome5';

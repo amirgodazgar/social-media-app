@@ -12,14 +12,9 @@ import Indicator from '../../components/indicator/indicator';
 
 const Feed = () => {
   const navigation = useNavigation();
-  const [posts, setPosts] = useState([]);
   const {data: postsData, isLoading} = useQuery('getPosts', getPosts);
 
-  useEffect(() => {
-    getPosts().then(res => {
-      setPosts(res);
-    });
-  }, []);
+  console.log(postsData);
 
   if (isLoading) return <Indicator />;
 

@@ -60,7 +60,7 @@ export const styles = ScaledSheet.create({
     fontWeight: '600',
   },
   caption: {
-    flex: 0.2,
+    flex: 0.3,
     paddingHorizontal: '5@sr',
     paddingVertical: '2@sr',
   },

@@ -1,31 +1,31 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {FlatList, TouchableOpacity} from 'react-native';
+import {
+  FlatList,
+  TouchableOpacity,
+  ActivityIndicator,
+  View,
+} from 'react-native';
 import {getPosts} from '../../services/getPosts';
 import Layout from '../../components/layout/layout';
 import Post from './post';
 import {SCREEN_NAMES} from '../../constant/screenRoutes';
-import {useInfiniteQuery, useQuery} from 'react-query';
+import {useInfiniteQuery} from 'react-query';
 import Indicator from '../../components/indicator/indicator';
-import httpsPrivate from '../../services/https';
 
 const Feed = () => {
   const navigation = useNavigation();
 
   const {isLoading, isFetchingNextPage, data, hasNextPage, fetchNextPage} =
-    useInfiniteQuery('posts-infinite', getPosts, {
-      getNextPageParam: (lastPage, allPage) => {
-        console.log('iiiiii', !lastPage.length);
-
-        if (!lastPage.length) console.log('EMPTY');
-        else return lastPage;
+    useInfiniteQuery('posts', getPosts, {
+      getNextPageParam: (_, allPage) => {
+        console.log('allPage', allPage);
+        if (allPage.length < 4) return allPage.length + 1;
+        else return undefined;
       },
     });
 
-  console.log('infiniteData', data && data.pages.flat());
-
   const loadMore = () => {
-    // console.log('hasss', hasNextPage);
     if (hasNextPage) fetchNextPage();
   };
 
@@ -57,6 +57,12 @@ const Feed = () => {
     </TouchableOpacity>
   );
 
+  const scrollIndicator = () => (
+    <View style={{padding: 8}}>
+      <ActivityIndicator size="large" color="#eaeaea" />
+    </View>
+  );
+
   return (
     <Layout storyMode>
       <FlatList
@@ -65,7 +71,7 @@ const Feed = () => {
         keyExtractor={item => item.id}
         onEndReached={loadMore}
         onEndReachedThreshold={0.3}
-        // ListFooterComponent={isFetchingNextPage ? <Indicator /> : null}
+        ListFooterComponent={isFetchingNextPage ? scrollIndicator : null}
       />
     </Layout>
   );

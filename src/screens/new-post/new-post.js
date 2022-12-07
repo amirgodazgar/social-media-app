@@ -9,6 +9,7 @@ import useCreatePost from '../../hooks/useCreatePost';
 import Indicator from '../../components/indicator/indicator';
 import {useNavigation} from '@react-navigation/native';
 import {SCREEN_NAMES} from '../../constant/screenRoutes';
+import notifee from '@notifee/react-native';
 
 const NewPost = () => {
   const [uploadData, setUploadData] = useState(null);
@@ -34,7 +35,22 @@ const NewPost = () => {
     });
   };
 
-  const onSubmit = ({title, caption}, event) => {
+  const onDisplayNotification = async () => {
+    const channelId = await notifee.createChannel({
+      id: 'default',
+      name: 'Default Channel',
+    });
+
+    await notifee.displayNotification({
+      title: 'Post has been sent successfully',
+      body: 'Check it out in your Feed !',
+      android: {
+        channelId,
+      },
+    });
+  };
+
+  const onSubmit = ({title, caption}) => {
     const {name, type, uri} = uploadData;
     const data = JSON.stringify({
       title,
@@ -52,6 +68,8 @@ const NewPost = () => {
 
     reset({title: '', caption: ''});
 
+    onDisplayNotification();
+
     setTimeout(() => {
       navigate(SCREEN_NAMES.FEED_ROOT);
     }, 2000);
@@ -64,10 +82,6 @@ const NewPost = () => {
       <View style={styles.headerBox}>
         <View style={styles.goBack}>
           <Text style={styles.backText}>Send Post</Text>
-
-          {data ? (
-            <Text style={{color: '#9CFF2E'}}>Post has been sent</Text>
-          ) : null}
         </View>
         <TouchableOpacity
           onPress={handleSubmit(onSubmit)}

@@ -1,5 +1,5 @@
-import {useNavigation} from '@react-navigation/native';
-import React from 'react';
+import {useFocusEffect, useNavigation} from '@react-navigation/native';
+import React, {useState} from 'react';
 import {
   FlatList,
   TouchableOpacity,
@@ -14,6 +14,7 @@ import {useInfiniteQuery} from 'react-query';
 import Indicator from '../../components/indicator/indicator';
 
 const Feed = () => {
+  // const [refresh, setRefresh] = useState(false);
   const navigation = useNavigation();
 
   const {isLoading, isFetchingNextPage, data, hasNextPage, fetchNextPage} =
@@ -62,6 +63,11 @@ const Feed = () => {
     </View>
   );
 
+  // useFocusEffect(() => {
+  //   setRefresh(true);
+  //   return () => setRefresh(false);
+  // });
+
   return (
     <Layout storyMode>
       <FlatList
@@ -71,6 +77,7 @@ const Feed = () => {
         onEndReached={loadMore}
         onEndReachedThreshold={0.3}
         ListFooterComponent={isFetchingNextPage ? scrollIndicator : null}
+        // refreshing={refresh}
       />
     </Layout>
   );

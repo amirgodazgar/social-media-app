@@ -68,11 +68,13 @@ const NewPost = () => {
 
     reset({title: '', caption: ''});
 
-    onDisplayNotification();
+    if (data) {
+      onDisplayNotification();
 
-    setTimeout(() => {
-      navigate(SCREEN_NAMES.FEED_ROOT);
-    }, 2000);
+      setTimeout(() => {
+        navigate(SCREEN_NAMES.FEED_ROOT);
+      }, 3000);
+    }
   };
 
   if (isLoading) return <Indicator />;

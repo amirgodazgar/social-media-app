@@ -19,7 +19,6 @@ const Feed = () => {
   const {isLoading, isFetchingNextPage, data, hasNextPage, fetchNextPage} =
     useInfiniteQuery('posts', getPosts, {
       getNextPageParam: (_, allPage) => {
-        console.log('allPage', allPage);
         if (allPage.length < 4) return allPage.length + 1;
         else return undefined;
       },

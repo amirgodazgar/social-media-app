@@ -7,30 +7,34 @@ import {Controller, useForm} from 'react-hook-form';
 import {launchCamera, launchImageLibrary} from 'react-native-image-picker';
 import useCreatePost from '../../hooks/useCreatePost';
 import Indicator from '../../components/indicator/indicator';
+import {useNavigation} from '@react-navigation/native';
+import {SCREEN_NAMES} from '../../constant/screenRoutes';
 
 const NewPost = () => {
   const [uploadData, setUploadData] = useState(null);
-  const {control, handleSubmit} = useForm({
+  const {control, handleSubmit, reset} = useForm({
     defaultValues: {
       title: '',
       caption: '',
     },
   });
-
+  const {navigate} = useNavigation();
   const {setCreateNewPost, isLoading, data} = useCreatePost();
 
   const uploadImage = () => {
     launchImageLibrary({}, res => {
-      const assets = res.assets[0];
-      setUploadData({
-        name: assets.fileName,
-        type: assets.type,
-        uri: assets.uri,
-      });
+      if (!res.didCancel) {
+        const assets = res.assets[0];
+        setUploadData({
+          name: assets.fileName,
+          type: assets.type,
+          uri: assets.uri,
+        });
+      }
     });
   };
 
-  const onSubmit = ({title, caption}) => {
+  const onSubmit = ({title, caption}, event) => {
     const {name, type, uri} = uploadData;
     const data = JSON.stringify({
       title,
@@ -45,6 +49,12 @@ const NewPost = () => {
     });
 
     setCreateNewPost(formData);
+
+    reset({title: '', caption: ''});
+
+    setTimeout(() => {
+      navigate(SCREEN_NAMES.FEED_ROOT);
+    }, 2000);
   };
 
   if (isLoading) return <Indicator />;

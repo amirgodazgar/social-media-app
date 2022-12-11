@@ -17,20 +17,19 @@ export const nameCreator = id => {
   }
 };
 
-export const getPostsMapper = data => {
+export const getProfilePostsMapper = data => {
   const baseUrl = 'http://192.168.1.99:1337';
 
   const mappedResponse = data.map(item => {
-    const imageSrc = item.attributes.images.data
-      ? `${baseUrl}${item.attributes.images.data[0].attributes.url}`
+    const imageSrc = item.images
+      ? `${baseUrl}${item.images[0].url}`
       : require('../../../assets/post4.jpeg');
 
     const updatedData = {
       id: item.id,
-      username: item.attributes.user.data.attributes.username,
-      title: item.attributes.title,
-      caption: item.attributes.caption,
-      publishAt: convertDate(item.attributes.publishedAt),
+      title: item.title,
+      caption: item.caption,
+      publishAt: convertDate(item.publishedAt),
       imageSrc,
       avatarSrc: require('../../../assets/man2.jpg'),
     };

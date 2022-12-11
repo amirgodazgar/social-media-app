@@ -23,8 +23,12 @@ const PostDetail = () => {
   } = route.params;
 
   const imageSrcType = source => {
-    if (typeof source === 'string') return {uri: source};
-    if (typeof source === 'number') return source;
+    if (typeof source === 'string') {
+      return {uri: source};
+    }
+    if (typeof source === 'number') {
+      return source;
+    }
   };
 
   useFocusEffect(() => {

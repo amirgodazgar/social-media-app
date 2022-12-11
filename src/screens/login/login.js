@@ -92,7 +92,7 @@ const Login = () => {
                     onBlur={onBlur}
                     value={value}
                     keyboardType="email-address"
-                    placeholder="Email"
+                    placeholder="Username"
                     placeholderTextColor={'#EAEAEA'}
                     style={styles.input}
                   />
